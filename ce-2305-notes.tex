@@ -1,0 +1,77 @@
+\documentclass{MathNotes}
+
+\newenvironment{example}[1]{\begin{BlueBox}{Example}{#1}}{\end{BlueBox}}
+\newenvironment{definition}[1]{\begin{RedBox}{Definition}{#1}}{\end{RedBox}}
+\newenvironment{note}[1]{\begin{YellowBox}{Note}{#1}}{\end{YellowBox}}
+\newenvironment{theorem}[1]{\begin{GrayBox}{Theorem}{#1}}{\end{GrayBox}}
+\newenvironment{practice}[1]{\begin{PurpleBox}{Practice}{#1}}{\end{PurpleBox}}
+
+\newcommand{\br}{
+	\begin{center}
+		\line(1,0){4ex}
+	\end{center}
+}
+\newcommand{\bl}{
+	\newline$ $\newline
+}
+\newcommand{\continued}{
+	\mbox{}
+	\vfill
+	\textbf{Continued on Next Page\ldots}\newpage
+}
+%----------------------Author Information-----------------
+\title{Speed Running Calculus}
+\author{Minh Nguyen}
+
+%---------------------Document Begin-----------------------
+% \usepackage{layout}
+\begin{document}
+% \begin{center}
+%     \layout*
+% \end{center}
+\newpage
+\maketitle
+\pagenumbering{gobble}
+\vfill
+\tableofcontents
+\newpage
+\section*{Author's Notes}
+This actually isn't the first copy of my discrete math notes\ldots I had an earlier copy that got corrupted, so now I'm just going to constantly upload to GitHub because I'm afraid of them getting wiped again \emoji{sob}
+\br{}
+
+These notes are based off of the textbook \textit{Discrete Mathematics and Its Applications} by \textit{Kenneth H. Rosen}, as well as from the lectures of \textit{Serdar Erbatur} from the \textit{Fall 2023} semester.
+\br{}
+If you have any complaints, or suggestions regarding these notes, please
+email me at \newline\href{mailto:minh.nguyen7@utdallas.edu}{mdn220004@utdallas.edu}
+\newpage
+\pagenumbering{arabic}
+\section{Propositional Logic}\label{tab:prop-examples}
+\begin{definition}{Proposition}
+	Declarative statements that are either \verb|true| or \verb|false|
+\end{definition}
+
+\begin{table}[h!]
+	\centering
+	\caption{Examples of propositions}
+	\begin{tabular}{lc}
+		\multicolumn{1}{c}{\textbf{Statement}} & \multicolumn{1}{c}{\textbf{Proposition?}} \\
+		\midrule
+		$1+1=2$                                & \emoji{check-mark}                        \\
+		What class are ya takin?               & \emoji{no-entry}                          \\
+		I am happy                             & \emoji{check-mark}
+	\end{tabular}
+\end{table}
+
+\subsection{Logical Operators}
+
+\subsection{Propositional Equivalencies}
+\subsection{Predicates and Quantifiers}
+\subsection{Nested Predicates}
+\subsection{Inference Rules and Proofs}
+\section{Set Theory}
+\subsection{Cardinality}
+\subsection{Set Operations}
+\subsection{Functions}
+\subsection{Floor and nCeiling Functions}
+\section{Algorithms}
+\end{document}
