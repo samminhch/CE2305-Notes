@@ -45,12 +45,13 @@ If you have any complaints, or suggestions regarding these notes, please
 email me at \newline\href{mailto:minh.nguyen7@utdallas.edu}{mdn220004@utdallas.edu}
 \newpage
 \pagenumbering{arabic}
-\section{Propositional Logic}\label{tab:prop-examples}
+
+\section{Propositional Logic}\label{sec:propositional-logic}
 \begin{definition}{Proposition}
 	Declarative statements that are either \verb|true| or \verb|false|
 \end{definition}
 
-\begin{table}[h!]
+\begin{table}[h!]\label{tab:prop-examples}
 	\centering
 	\caption{Examples of propositions}
 	\begin{tabular}{lc}
@@ -62,7 +63,77 @@ email me at \newline\href{mailto:minh.nguyen7@utdallas.edu}{mdn220004@utdallas.e
 	\end{tabular}
 \end{table}
 
-\subsection{Logical Operators}
+Propositons can be combined to form another proposition with the use of \textit{logical operators}
+\begin{note}{}
+	Common labels for propositions in discrete mathematics include letters like $P,Q,R,S$\ldots
+\end{note}
+
+\begin{table}[h!]\label{tab:logical-operators}
+	\centering
+	\caption{Logical Operators in Discrete Mathematics}
+	\begin{tabular}{clc}
+		\multicolumn{1}{c}{\textbf{Symbol}}   &
+		\multicolumn{1}{c}{\textbf{Meaning} } &
+		\multicolumn{1}{c}{\textbf{Expression}}                                            \\
+		\midrule
+		$\lnot$                               & negation / not             & $\lnot P$     \\
+		$\land$                               & conjunction / and          & $P\land Q$    \\
+		$\lor$                                & disjunction / or           & $P\lor Q$     \\
+		$\oplus$                              & exclusive disjunction/ xor & $P\oplus Q$   \\
+		$\implies$                            & implication / conditional  & $P\implies Q$ \\
+		$\iff$                                & biconditional              & $P\iff Q$     \\
+	\end{tabular}
+\end{table}
+
+\begin{note}{Logical Operator Precedence}\label{order-of-operations}
+	Order matters when it comes to evaluating logical operators:
+	\begin{enumerate}
+		\item negaiton
+		\item conjunction
+		\item disjunctions
+		\item conditionals
+	\end{enumerate}
+	Where negation is evaluated first, and conditionals last.
+\end{note}
+
+\newpage
+\begin{multicols}{2}
+	\begin{theorem}{More on Conditionals}\label{th:conditionals-extra}
+		Conditionals can also be expressed in three other ways:
+		\bl
+		\textbf{Contrapositive:} $\lnot Q\implies\lnot P$
+		\bl
+		\textbf{Converse:} $Q\implies P$
+		\bl
+		\textbf{Inverse:} $\lnot P\implies\lnot Q$
+	\end{theorem}
+	\begin{example}{}
+		\textbf{Conditional:} If \underline{it is raining}, then \underline{I am not going to town}
+		\bl
+		\textbf{Contrapositive:} If \underline{I go to town}, then \underline{it is not raining}
+		\bl
+		\textbf{Converse:} If \underline{I do not go to town}, then \underline{it is raining}
+		\bl
+		\textbf{Inverse:} If \underline{it is not raining}, then \underline{I am going to town}
+	\end{example}
+\end{multicols}
+
+\begin{definition}{Truth Table}
+They are used as a way of seeing all possible values of a proposition
+\end{definition}
+
+\begin{table}[h!]\label{tab:truth-table-example}
+\centering
+\caption{Truth Table of $P\implies Q$}
+\begin{tabular}{cc|c}
+$P$ & $Q$ & $P\implies Q$\\
+\hline
+F & F & T \\
+F & T & T \\
+T & F & F \\
+T & T & T \\
+\end{tabular}
+\end{table}
 
 \subsection{Propositional Equivalencies}
 \subsection{Predicates and Quantifiers}
