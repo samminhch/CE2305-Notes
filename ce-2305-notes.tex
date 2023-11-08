@@ -119,23 +119,108 @@ Propositons can be combined to form another proposition with the use of \textit{
 \end{multicols}
 
 \begin{definition}{Truth Table}
-They are used as a way of seeing all possible values of a proposition
+	They are used as a way of seeing all possible values of a proposition
 \end{definition}
 
 \begin{table}[h!]\label{tab:truth-table-example}
-\centering
-\caption{Truth Table of $P\implies Q$}
-\begin{tabular}{cc|c}
-$P$ & $Q$ & $P\implies Q$\\
-\hline
-F & F & T \\
-F & T & T \\
-T & F & F \\
-T & T & T \\
-\end{tabular}
+	\centering
+	\caption{Truth Table of $P\implies Q$}
+	\begin{tabular}{cc|c}
+		$P$ & $Q$ & $P\implies Q$ \\
+		\hline
+		F   & F   & T             \\
+		F   & T   & T             \\
+		T   & F   & F             \\
+		T   & T   & T             \\
+	\end{tabular}
 \end{table}
 
-\subsection{Propositional Equivalencies}
+\subsection{Propositional Equivalencies}\label{sec:prop-equivalencies}
+\begin{definition}{Equivalencies}\label{def:equivalencies}
+	A proposition is a\ldots
+	\begin{itemize}
+		\item \textbf{Tautology} if it is \verb|true| in \textit{every case}
+		\item \textbf{Contradiction / Fallacy} if it is \verb|false| in \textit{every case}
+		\item \textbf{Contingency} if \textit{neither} is the case
+	\end{itemize}
+\end{definition}
+
+\begin{table}[h!]\label{tab:tautology-contradiciton-ex}
+	\centering
+	\caption{Example of Tautology and Contradiction}
+	\begin{tabular}{c|c|c|c}
+		$P$ & $\lnot P$ & $P\lor\lnot P$ & $P\land\lnot P$ \\
+		\hline
+		T   & F         & T              & F               \\
+		F   & T         & T              & F
+	\end{tabular}
+\end{table}
+
+\begin{definition}{Logical Equivalency ($\equiv$)}\label{th:logical-equiv}
+	Compound propositions $P$ and $Q$ are \textit{logically equivalent} if $P\iff Q$ is a \textit{tautology}. This is expressed as \[P\equiv Q\]
+\end{definition}
+
+Below is a table of useful logical equivalencies
+
+\begin{table}[h!]
+	\centering
+	\caption{Logical Equivalencies}
+	\begin{tabular}{ll}
+		\textbf{Name}                 & \textbf{Equivalence}                            \\
+		\midrule
+		\multirow{2}{*}{Identity}     & $P\land\text{T} \equiv P$                       \\
+		                              & $P\lor\text{F} \equiv P$                        \\
+		\hdashline{}
+		\multirow{2}{*}{Idempotent}   & $P\land P \equiv P$                             \\
+		                              & $P\lor P \equiv P$                              \\
+		\hdashline{}
+		\multirow{2}{*}{Domination}   & $P\lor\text{T} \equiv \text{T}$                 \\
+		                              & $P\land\text{F} \equiv \text{F}$                \\
+		\hdashline{}
+		\multirow{2}{*}{Negation}     & $P\lor\lnot P \equiv \text{T}$                  \\
+		                              & $P\land\lnot P \equiv \text{F}$                 \\
+		\hdashline{}
+		Double Negation               & $\lnot(\lnot P)\equiv P$                        \\
+		\hdashline{}
+		\multirow{2}{*}{Commutative}  & $P\land Q\equiv Q\land P$                       \\
+		                              & $P\lor Q\equiv Q\lor P$                         \\
+		\hdashline{}
+		\multirow{2}{*}{Associative}  & $(P\land Q)\land R\equiv P\land(Q\land R)$      \\
+		                              & $(P\lor Q)\lor R\equiv P\lor(Q\lor R)$          \\
+		\hdashline{}
+		\multirow{2}{*}{Distributive} & $P\land(Q\lor R)\equiv(P\land Q)\lor(P\land R)$ \\
+		                              & $P\lor(Q\land R)\equiv(P\lor Q)\land(P\lor R)$  \\
+		\hdashline{}
+		\multirow{2}{*}{De Morgan's}  & $\lnot(P\land Q)\equiv\lnot P\lor\lnot Q$       \\
+		                              & $\lnot(P\lor Q)\equiv\lnot P\land\lnot Q$       \\
+		\hdashline{}
+		\multirow{2}{*}{Absorption}   & $P\land(P\lor Q)\equiv P$                       \\
+		                              & $P\lor(P\land Q)\equiv P$                       \\
+	\end{tabular}
+\end{table}
+
+The use of showing the equivalencies between two compound propositions is called a
+\textit{conditional-disjunction equivalence}
+\begin{example}{Conditional-Disjunction Equivalence}\label{ex:conditional-disjunction-equivalence}
+	\[P\implies Q\equiv\lnot P\lor Q\]
+\end{example}
+
+This can be proven with the use of a truth table \emoji{smiling-face-with-hearts}
+\continued
+
+\begin{table}[h!]\label{tab:conditional-disjunction-equivalence}
+	\centering
+	\caption{Conditional-Disjunction Equivalence Proof}
+	\begin{tabular}{cc|c|c|c}
+		$P$ & $Q$ & $\lnot P$ & $\lnot P\lor Q$ & $P\implies Q$ \\
+		\hline
+		F   & F   & T         & T               & T             \\
+		F   & T   & T         & T               & T             \\
+		T   & F   & F         & F               & F             \\
+		T   & T   & F         & T               & T             \\
+	\end{tabular}
+\end{table}
+
 \subsection{Predicates and Quantifiers}
 \subsection{Nested Predicates}
 \subsection{Inference Rules and Proofs}

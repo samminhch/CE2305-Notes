@@ -13,6 +13,7 @@
 ]{geometry}
 \setlength\parindent{0pt}
 \RequirePackage{multicol}
+\RequirePackage{multirow}
 \RequirePackage[document]{ragged2e}
 \RequirePackage{marginnote}
 \RequirePackage{booktabs}
@@ -23,6 +24,7 @@
 \RequirePackage{tcolorbox}
 \RequirePackage{pstricks}
 \RequirePackage{amsmath, amssymb, amsthm, amsfonts}
+\RequirePackage{arydshln}
 \RequirePackage{hyperref}
 \hypersetup{
     colorlinks=true,
