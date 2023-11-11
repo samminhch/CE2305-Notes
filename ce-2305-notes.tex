@@ -48,7 +48,7 @@ email me at \newline\href{mailto:minh.nguyen7@utdallas.edu}{mdn220004@utdallas.e
 
 \section{Propositional Logic}\label{sec:propositional-logic}
 \begin{definition}{Proposition}
-	Declarative statements that are either \verb|true| or \verb|false|
+	Declarative statements that are either \texttt{true} or \texttt{false}
 \end{definition}
 
 \begin{table}[h!]\label{tab:prop-examples}
@@ -139,8 +139,8 @@ Propositons can be combined to form another proposition with the use of \textit{
 \begin{definition}{Equivalencies}\label{def:equivalencies}
 	A proposition is a\ldots
 	\begin{itemize}
-		\item \textbf{Tautology} if it is \verb|true| in \textit{every case}
-		\item \textbf{Contradiction / Fallacy} if it is \verb|false| in \textit{every case}
+		\item \textbf{Tautology} if it is \texttt{true} in \textit{every case}
+		\item \textbf{Contradiction / Fallacy} if it is \texttt{false} in \textit{every case}
 		\item \textbf{Contingency} if \textit{neither} is the case
 	\end{itemize}
 \end{definition}
@@ -213,7 +213,7 @@ This can be proven with the use of a truth table \emoji{smiling-face-with-hearts
 	\caption{Conditional-Disjunction Equivalence Proof}
 	\begin{tabular}{cc|c|c|c}
 		$P$ & $Q$ & $\lnot P$ & $\lnot P\lor Q$ & $P\implies Q$ \\
-		\hline
+		\midrule
 		F   & F   & T         & T               & T             \\
 		F   & T   & T         & T               & T             \\
 		T   & F   & F         & F               & F             \\
@@ -221,13 +221,226 @@ This can be proven with the use of a truth table \emoji{smiling-face-with-hearts
 	\end{tabular}
 \end{table}
 
-\subsection{Predicates and Quantifiers}
-\subsection{Nested Predicates}
+\subsection{Predicates and Quantifiers}\label{sec:predicates-quantifiers}
+
+\begin{note}{}
+	So far, propositional logic can only handle \textit{singular} subjects. It can't handle statements such as:
+	\begin{itemize}
+		\item All computer science students can program well
+		\item $3x+4\geq0$
+	\end{itemize}
+\end{note}
+
+\begin{multicols}{2}
+	\begin{definition}{Predicate Logic}\label{def:pred-logic}
+		When you have a proposition that contains a variable. It is typically written as a \textit{propositional function}, $P(x)$, where $x$ is the subject for the predicate $P$
+	\end{definition}
+
+	\begin{example}{}\label{ex:pred-logic}
+		\begin{itemize}
+			\item $F(x)=\text{``}x>3\text{''}$
+			\item $P(x)=\text{``}x\text{ looks beautiful!''}$
+		\end{itemize}
+	\end{example}
+\end{multicols}
+
+\begin{note}{Multi-variable Propositional Functions}\label{note:prop-func-multi}
+	Propositional functions may also contain more than just one argument:
+	\[P(x,y)\]
+\end{note}
+
+\begin{definition}{Quantifiers}\label{def:quantifiers}
+	They define the range of which a proposition holds \texttt{true}, and can be nested to produce \textit{nested quantifiers}
+\end{definition}
+
+\marginnote{$\forall x.P(x)$ may also be written as $\forall xP(x)$, and the same holds for the other quantifiers}
+\begin{table}[h!]\label{tab:quantifiers}
+	\centering
+	\caption{Quantifiers in Discrete Mathematics}
+	\begin{tabular}{l l l}
+		\multicolumn{1}{c}{\textbf{Quantifier}} &
+		\multicolumn{1}{c}{\textbf{Expression}} &
+		\multicolumn{1}{c}{\textbf{In English}}                                                                                         \\
+		\midrule
+		Universal Quantifier                    & $\forall x. P(x)$  & $P(x)$ is \texttt{true} for every $x$ in its domain              \\
+		\hdashline{}
+		\multirow{3}{*}{Existential Quantifier} & $\exists x. P(x)$  & There exists $x$ where $P(x)$ is \texttt{true}                   \\
+		                                        & $\nexists x. P(x)$ & There does not exist $x$ where $P(x)$ is \texttt{true}           \\
+		                                        & $\exists! x. P(x)$ & There exists \textit{only one} $x$ where $P(x)$ is \texttt{true}
+	\end{tabular}
+\end{table}
+
+\begin{example}{Nested Quantifiers}\label{ex:nested-quantifiers}
+	\centering
+	\[\forall x\exists y.(x+y=0)\] Translates to: ``For \textit{every} $x$ \textit{there exists} a $y$ such that $x+y=0$''
+\end{example}
 \subsection{Inference Rules and Proofs}
+\begin{multicols}{2}
+	\begin{definition}{Argument}\label{def:argument}
+		A sequence of statements that have a conclusion
+	\end{definition}
+
+	\begin{definition}{Valid}\label{def:valid}
+		The conclusion, the final statement of the argument, must follow from its premises
+		\newline
+		(i.e. premises $\implies$ conclusion)
+	\end{definition}
+
+	\begin{definition}{Premise}\label{def:premise}
+		The preceeding statements of a mathematical argument that lead to a conclusion
+	\end{definition}
+
+	\begin{definition}{Fallacy}
+		Incorrect reasoning in discrete mathematics that leads to an invalid argument
+	\end{definition}
+\end{multicols}
+
+
+\begin{example}{Argumentative Form}\label{ex:argumentative-form}
+	Arguments may be written as this: $\big((P\implies Q)\land P\big)\implies Q$, or in argumentative form:
+	\begin{align*}
+		           & P\implies Q                 \\
+		           & \underline{P\hspace{3.5em}} \\
+		\therefore & Q
+	\end{align*}
+\end{example}
+
+The next page contains a table of inference rules
+\newpage
+\begin{table}[h!]\label{tab:inference-rules}
+	\centering
+	\caption{Rules of Inference}
+	\begin{tabular}{lll}
+		\multicolumn{1}{c}{\textbf{Rule}}                          &
+		\multicolumn{1}{c}{\textbf{Expression}}                    &
+		\multicolumn{1}{c}{\textbf{Tautology}}                            \\
+		\midrule
+		Modus ponens                                               &
+		$\begin{array}{rl}
+				            & P                       \\
+				            & \underline{P\implies Q} \\
+				 \therefore & Q\end{array}$                    &
+		$\big(P\land(P\implies Q)\big)\implies Q$                         \\
+		\hdashline{}
+		Modus tollens                                              &
+		$\begin{array}{rl}
+				            & \lnot Q                 \\
+				            & \underline{P\implies Q} \\
+				 \therefore & \lnot P\end{array}$                    &
+		$\big(\lnot Q\land(P\implies Q)\big)\implies \lnot P$             \\
+		\hdashline{}
+		Hypothetical syllogism                                     &
+		$\begin{array}{rl}
+				            & P\implies Q             \\
+				            & \underline{Q\implies R} \\
+				 \therefore & P\implies R\end{array}$                    &
+		$\big((P\implies Q)\land(Q\implies R)\big)\implies (P\implies R)$ \\
+		\hdashline{}
+		Disjunctive syllogism                                      &
+		$\begin{array}{rl}
+				            & P\lor Q                            \\
+				            & \underline{\lnot P\hspace{1.25em}} \\
+				 \therefore & Q\end{array}$ &
+		$\big((P\lor Q)\land\lnot P\big)\implies Q$                       \\
+		\hdashline{}
+		Addition                                                   &
+		$\begin{array}{rl}
+				            & \underline{P\hspace{2em}} \\
+				 \therefore & P\lor Q\end{array}$       &
+		$P\implies(P\lor Q)$                                              \\
+		\hdashline{}
+		Simplification                                             &
+		$\begin{array}{rl}
+				            & \underline{P\land Q} \\
+				 \therefore & P\end{array}$                       &
+		$(P\land Q)\implies P$                                            \\
+		\hdashline{}
+		Conjunction                                                &
+		$\begin{array}{rl}
+				            & P                            \\
+				            & \underline{Q\hspace{1.25em}} \\
+				 \therefore & P\land Q\end{array}$       &
+		$\big((P)\land(Q)\big)\implies P\land Q$                          \\
+		\hdashline{}
+		Resolution                                                 &
+		$\begin{array}{rl}
+				            & P\lor Q                   \\
+				            & \underline{\lnot P\lor R} \\
+				 \therefore & Q\lor R\end{array}$                  &
+		$\big((P\lor Q)\land(\lnot P\lor R)\big)\implies (Q\lor R)$       \\
+		\hdashline{}
+	\end{tabular}
+\end{table}
+
+\begin{table}[h!]\label{tab:inference-rules-quantified}
+	\centering
+	\caption{Rules of Inference for Quantified Statements}
+	\begin{tabular}{ll}
+		\multicolumn{1}{c}{\textbf{Rule}} &
+		\multicolumn{1}{c}{\textbf{Expression}}                         \\
+		\midrule
+		Universal Instantiation           &
+		$\begin{array}{rl}
+				            & \underline{\forall x.P(x)} \\
+				 \therefore & P(c)\end{array}$                        \\
+		\hdashline{}
+		Universal Generalization          &
+		$\begin{array}{rl}
+				            & \underline{P(c) \text{ for an arbitrary } c} \\
+				 \therefore & \forall x.P(x)\end{array}$        \\
+		\hdashline{}
+		Existential Instantiation         &
+		$\begin{array}{rl}
+				            & \underline{\exists x.P(x)\hspace{7em}} \\
+				 \therefore & P(c)\text{ for some element } c\end{array}$ \\
+		\hdashline{}
+		Existential Generalization        &
+		$\begin{array}{rl}
+				            & \underline{P(c) \text{ for an arbitrary } c} \\
+				 \therefore & \forall x.P(x)\end{array}$        \\
+	\end{tabular}
+\end{table}
+
+\begin{definition}{Proof}\label{def:proof}
+	\underline{Valid arguments} that establish the \texttt{truth} of mathematical statements
+\end{definition}
+
+\begin{definition}{Theorem}\label{def:theorem}
+	A statement or claim that can be proven using:
+	\begin{itemize}
+		\item definitions
+		\item other theorems
+		\item axioms
+		\item inference rules
+	\end{itemize}
+	They are also referred to as ``Lemma'', ``Proposition'', or ``Corollary''
+\end{definition}
+There's many different ways of proving a theorem. Let's assume a conditional statement $P\implies Q$\ldots
+\begin{multicols}{2}
+	\begin{definition}{Direct Proof}\label{def:direct-proof}
+		When the first step is the assumption that $P$ is
+		\texttt{true} and the following steps that lead up to $Q$ is also \texttt{true}
+	\end{definition}
+
+	\begin{definition}{Indirect Proof}\label{def:indirect-proof}
+		Proofs that do not start with the premimses and end with conclusion (the opposite of a direct proof). Ways of doing direct proofs involve \textit{proof by contraposition}, \textit{proof by contradiction}, and much more\ldots
+	\end{definition}
+
+	\begin{example}{Proof by Contraposition}\label{ex:contraposition-proof}
+		$P\implies Q$ can be proved \texttt{true} if $\lnot Q\implies P$, its contraposition, can also be proved. This is because a contraposition and a conditional proposition are tautologies
+	\end{example}
+
+	\begin{example}{Proof by Contradiciton}\label{ex:contradiciton-proof}
+		To prove $P$, you must assume $\lnot P$ and derive that $\lnot P$ is \texttt{false}. If $\lnot P$ is \texttt{false}, then that must mean that $\lnot\lnot P$, or $P$, must be \texttt{true}
+	\end{example}
+\end{multicols}
+
+% TODO: write about proof by equivalence, existence, and exhaustion
+\newpage
 \section{Set Theory}
 \subsection{Cardinality}
 \subsection{Set Operations}
 \subsection{Functions}
-\subsection{Floor and nCeiling Functions}
+\subsection{Floor and Ceiling Functions}
 \section{Algorithms}
 \end{document}
