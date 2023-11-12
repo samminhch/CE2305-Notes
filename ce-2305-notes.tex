@@ -438,9 +438,246 @@ There's many different ways of proving a theorem. Let's assume a conditional sta
 % TODO: write about proof by equivalence, existence, and exhaustion
 \newpage
 \section{Set Theory}
-\subsection{Cardinality}
+\begin{multicols}{2}
+	\begin{definition}{set}\label{def:set}
+		A collection of \textit{unique} objects or elements
+		\begin{itemize}
+			\item $a\in A$ to state that $a$ is \textit{contained} in the set $A$
+			\item $a\not\in A$ to indicate that $a$ \textit{is not} contained in $A$
+		\end{itemize}
+	\end{definition}
+
+	\begin{note}{Defining Sets}\label{note:defining-sets}
+		Roster method
+		\begin{align*}
+			A & = \{a,b,c,d\}                            \\
+			B & = \{4,b,c,a\}                            \\
+			C & = \bigl\{1, 2, \{3.0, 3.5\}, 4, 5\bigr\} \\
+			D & = \{1, 2, C\}
+		\end{align*}
+		Set Builder Notation
+		\begin{align*}
+			E & = \{x\in\mathbb{N} \big| x=2k\text{ for some }k\in\mathbb{N}\} \\
+			F & = \{\alpha \big| P(\alpha) \text{ is }\texttt{true}\}
+		\end{align*}
+	\end{note}
+\end{multicols}
+
+\begin{table}[h!]\label{tab:important-sets}
+	\centering
+	\caption{Important Sets}
+	\begin{tabular}{cll}
+		\multicolumn{1}{c}{\textbf{Set}}                           &
+		\multicolumn{1}{c}{\textbf{Expansion}}                     &
+		\multicolumn{1}{c}{\textbf{Description}}                         \\
+		\midrule
+		$\mathbb{N}$                                               &
+		$\{0, 1, 2, 3,\cdots\}$                                    &
+		Natural numbers                                                  \\
+		$\mathbb{Z}$                                               &
+		$\{\cdots,-1,0, 1,\cdots\}$                                &
+		Integers                                                         \\
+		$\mathbb{Z}^+$                                             &
+		$\{1, 2, 3,\cdots\}$                                       &
+		Positive integers                                                \\
+		$\mathbb{Q}$                                               &
+		$\{\frac{P}{Q}\big|P\in\mathbb{Z},Q\in\mathbb{Z},Q\neq0\}$ &
+		Rational numbers                                                 \\
+		$\mathbb{R}$                                               &   &
+		Real numbers                                                     \\
+		$\mathbb{R}^+$                                             &
+		$\{x\big|x>0\}$                                            &
+		Positive real numbers                                            \\
+		$\mathbb{C}$                                               &   &
+		Complex numbers                                                  \\
+		$\varnothing$                                              &   &
+		Empty set                                                        \\
+	\end{tabular}
+\end{table}
+
+\newpage
+\subsection{Subsets}
+\begin{multicols}{2}
+	\begin{theorem}{Set Equality}\label{th:set-equality}
+		Given two sets $A$ and $B$:\[A\equiv B\iff\forall x.(x\in A\iff x\in B)\] is \texttt{true}
+	\end{theorem}
+
+	\begin{definition}{Subset ($\subseteq$)}
+		$A$ is a subset of $B$ if \textit{all elements of} $A$ are also containeed in $B$:
+		\[A\subseteq B\iff\forall x.(x\in A\implies x\in B)\]
+	\end{definition}
+\end{multicols}
+
+\begin{example}{Subsets}\label{ex:subsets}
+	Let $A=\{2,3\},B=\{a,b,c,2,3\}$\newline
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item $A\subseteq B$  \texttt{true}\\
+			\item $A\subseteq A$  \texttt{true}\\
+			\item $\varnothing\subseteq A$  \texttt{true}\\
+			\item $B\subseteq A$  \texttt{false}\\
+		\end{itemize}
+	\end{multicols}
+\end{example}
+
+\marginnote{This notation is seen in Section~\ref{def:cardinality}}
+\begin{multicols}{2}
+	\begin{definition}{Power Set}\label{def:power-set}
+		The set of all subsets of the set\[\bigl|A\bigr|=n,\bigl|P(A)\bigr|=2^n\]
+	\end{definition}
+
+	\begin{example}{}\label{ex:power-set}
+		Let $S=\{1,2\}$:\[P(S)=\bigl\{\varnothing,\{1\},\{2\},\{1,2\}\bigr\}\]
+	\end{example}
+\end{multicols}
+
+\begin{definition}{Proper Subset ($\subset$)}
+	It's a subset where $A\neq B$: \[A\subset B\iff\forall x.(x\in A\implies x\in B)\land A\neq B\]
+\end{definition}
+
+\subsection{Cardinality}\label{sec:cardinality}
+
+\begin{multicols}{2}
+	\begin{definition}{Cardinality}\label{def:cardinality}
+		It's the number of unique elements in a set. It's denoted by $\bigl|A\bigr|$
+	\end{definition}
+	\begin{example}{}\label{ex:cardinality}
+		\begin{tabular}{ll}
+			$\big\{\{1, 2\}, 3\big\}$ & 2 elements \\
+			$\{1,2,3\}=\{1,2,3,3\}$   & 3 elements \\
+			$\{\varnothing\}$         & 1 element  \\
+			$\{\}$                    & 0 elements \\
+			$\{\varnothing\}$         & 1 element
+		\end{tabular}
+	\end{example}
+	\begin{definition}{Intervals}\label{def:intervals}
+		Sets of numbers \textit{between} two numbers $a$ and $b$ if
+		$a,b\in\mathbb{R}\land a\leq b$
+		\begin{itemize}
+			\item $[a, b]=x\big|a\leq x\leq b$
+			\item $[a, b)=x\big|a\leq x < b$
+			\item $(a, b]=x\big|a < x\leq b$
+			\item $(a, b)=x\big|a < x < b$
+		\end{itemize}
+	\end{definition}
+\end{multicols}
+
+\newpage
+\begin{multicols}{2}
+	\begin{definition}{Ordered Tuples}\label{def:ordered-tuples}
+		\[(a_0,a_1,a_2,\cdots,a_n)\]
+		An \textit{ordered collection} of unique elements
+		\[(a,b,c)\neq(b,c,a)\]
+	\end{definition}
+	\begin{theorem}{Cartesian Products}\label{th:cartesian-products}
+		Let $A$ and $B$ be sets:\[A\times B=\{(a,b)\big|a\in A,b\in B\}\]
+	\end{theorem}
+\end{multicols}
+\begin{example}{Cartesian Product}
+	Let $A=\{1,2\},B=\{a,b,c\}$:
+	\[A\times B=\{(1,a),(1,b),(1,c),(2,a),(2,b),(2,c)\}\]
+\end{example}
+
 \subsection{Set Operations}
+Let $A=\{1,2,3\},B=\{2,3,4,5\}$:
+\begin{table}[h!]
+	\centering
+	\caption{Set Operations}
+	\begin{tabular}{ccl}
+		\multicolumn{1}{c}{\textbf{Expression}} &
+		\multicolumn{1}{c}{\textbf{Meaning}}    &
+		\multicolumn{1}{c}{\textbf{Result}}                                               \\
+		\midrule
+		$A\cup B$                               & $A$ union $B$        & $\{1,2,3,4,5\}$  \\
+		$A\cap B$                               & $A$ intersection $B$ & $\{2,3\}$        \\
+		$\bar{A}$                               & $A$ complement $B$   & $\{x\not\in A\}$ \\
+	\end{tabular}
+\end{table}
+\begin{definition}{Membership Table}\label{def:membership-table}
+	It's very similar to a truth table, where \texttt{true} means that an element exists within the set, and \texttt{false} means that the element isn't.
+\end{definition}
+
+\begin{table}[h!]
+	\centering
+	\caption{Membership Table Example}
+	\begin{tabular}{cc|c|c}
+		$A$            & $B$            & $A\cup B$      & $A\cap B$      \\
+		\midrule
+		\texttt{false} & \texttt{false} & \texttt{false} & \texttt{false} \\
+		\texttt{false} & \texttt{true}  & \texttt{true}  & \texttt{false} \\
+		\texttt{true}  & \texttt{false} & \texttt{true}  & \texttt{false} \\
+		\texttt{true}  & \texttt{true}  & \texttt{true}  & \texttt{true}
+	\end{tabular}
+\end{table}
+
+\newpage
 \subsection{Functions}
-\subsection{Floor and Ceiling Functions}
+
+\begin{multicols}{2}
+	\begin{definition}{Function}\label{def:function}
+		Function $f$ is denoted from set $A$ to set $B$:
+		\[f:A\to B\]
+		representing a relation that assigns each element of $A$ to \textit{exactly one} element
+		of $B$
+	\end{definition}
+
+	\begin{example}{}\label{ex:functions}
+		Let $A=\{1,2\},B=\{a,b\}$\[A\times B=\{(1,a),(1,b),(2,a),(2,b)\}\]
+		These are functions:
+		\begin{itemize}
+			\item $f=\{(1,a),(2,b)\}$
+			\item $f=\{(1,a),(2,a)\}$
+		\end{itemize}
+		This isn't:
+		\begin{itemize}
+			\item $f=\{(1,a),(1,b)\}$
+		\end{itemize}
+	\end{example}
+\end{multicols}
+
+\begin{theorem}{Equality of Functions}
+	Two functions $f$ and $g$ are equal if:
+	\begin{itemize}
+		\item They share the same domains / co-domains
+		\item They assign the same element from the domain to the same element
+	\end{itemize}
+	Let $f:A\to B,g:C\to D$:
+	\begin{itemize}
+		\item $A\neq C\lor B\neq D\implies f\neq g$
+		\item $A=C\lor B=D\implies f=g$
+	\end{itemize}
+\end{theorem}
+\begin{multicols}{2}
+{
+\begin{definition}{One-to-One Functions (Injective)}\label{def:one-to-one-functions}
+	A function $f:A\to B$ where all values $A$ must correspond to \textit{one and only one} element in $B$: \[\forall a\in A,\forall b\in B.\big(f(a)\neq f(b)\big)\]
+\end{definition}
+
+\begin{definition}{Bijection}\label{def:bijection}
+	A function that is \textit{both} one-to-one \textit{and} onto
+\end{definition}
+}
+\begin{definition}{Onto Functions (Subjective)}\label{def:onto-functions}
+	A function $f:A\to B$ where all values $B$ must correspond to \textit{at least an} element in $A$: \[\forall b\in B,\exists a\in A.\big(f(a)=b\big)\]
+\end{definition}
+\begin{definition}{Inverse of Function}\label{def:inverse-function}
+	\[f^{-1}(x)=y\iff f(y)=x\]
+\end{definition}
+\end{multicols}
+
+\begin{definition}{Compisite Functions}\label{def:composite-function}
+	\[\text{domain}(f)=\text{range}(g)\implies f\circ g(x)=f(g(x))\]
+	If the composite of the function exists, then:
+	\[(f\circ g)^{-1}=g^{-1}\circ f^{-1}\]
+\end{definition}
+
+\begin{multicols}{2}
+\begin{definition}{Floor ($\lfloor x\rfloor$)}\label{def:floor-function}
+	The biggest integer $n\leq x$
+\end{definition}
+\begin{definition}{Ceiling ($\lceil x\rceil$)}\label{def:floor-function}
+	The smallest integer $n\geq x$
+\end{definition}
+\end{multicols}
 \section{Algorithms}
 \end{document}
