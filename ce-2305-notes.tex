@@ -680,4 +680,95 @@ Let $A=\{1,2,3\},B=\{2,3,4,5\}$:
 \end{definition}
 \end{multicols}
 \section{Algorithms}
+\begin{multicols}{2}
+\begin{definition}{Algorithm}\label{def:algorithm}
+	A sequence of \textit{precise} steps used to solve computational problems
+\end{definition}
+\begin{note}{Input-Output}\label{note:input-output}
+	For every input instance, a correct output \textit{must} be produced
+\end{note}
+\end{multicols}
+
+\begin{algorithm}
+\caption{Binary Search Algorithm}\label{alg:binary-search}
+
+\KwIn{$A\gets\{A_1, A_2, \ldots, A_n\}$ where $A_i\in\mathbb{Z}$, $k\in\mathbb{Z}$}
+\KwOut{$i$ where $A_i=k$, or $i=0\implies k\notin A$}
+
+left$\gets 1$\;
+right$\gets n$\;
+\While{$left<right$}
+{
+	$i\gets\lfloor(\text{left}+\text{right})\div 2\rfloor$\;
+	\uIf{$A_i=k$}
+	{
+		\KwRet~$i$\;
+	}\uElseIf{$A_i<k$}
+	{
+		left$\gets i+1$\;
+	}\Else{
+		right$\gets i$\;
+	}
+}
+\KwRet~$0$\;
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Insertion Sort}\label{alg:insertion-sort}
+\SetKwFunction{FSwap}{swap}
+\SetKwFunction{FSort}{sort}
+\KwIn{$A\gets\{A_1, A_2, \ldots, A_n\}$ where $n\geq2$}
+\KwOut{$A\gets\{A_1, A_2, \ldots, A_n\}$ where $n\geq2\land A_i\leq A_{i+1}$}
+
+\For{$\text{i}\gets2$ \KwTo$n$}
+{
+	key$\gets A_{\text{i}}$\;
+	index$\gets\text{i}-1$\;
+
+	\While{$\text{index}\geq1\land A_{\text{index}}>key$}
+	{
+		$A_{\text{index}+1}\gets A_{\text{index}}$\;
+		$\text{index}\gets\text{index}-1$\;
+	}
+	$A_{\text{index}+1}\gets\text{key}$\;
+}
+
+\end{algorithm}
+
+
+\newpage
+\subsection{Growth of Functions}
+This can be used to determine the growth of functions, and is also mainly
+used in the field of \textit{computer science} to analyze algorithms.
+
+\begin{multicols}{2}
+	\begin{note}{Proving Big-O}\label{note:proving-big-o}
+		To prove that $f(x)=O\big(g(x)\big)$, you must prove the existence of a $C$ and $k$ that fulfill the definition:\[\exists C,k.\big(\forall x>k.(|f(x)|\leq C\times |g(x)|)\big)\]
+	\end{note}
+	\begin{definition}{Big-O Notation}\label{def:big-o-notation}
+		Let $f$ and $g$ be functions. $f(x)$ is $O\big(g(x)\big)$ (read ``$f(x)$ is Big-O of $g(x)$'') when there are constants $C$ and $k$ (the witnesses) such that:\[|f(x)|\leq C|g(x)|,x>k\] This is called the worst-case runtime of an algorithm
+	\end{definition}
+\end{multicols}
+
+\begin{example}{Identify the Witnesses}\label{ex:find-witnesses}
+Find $C,k$ such that $f(x)=4x^2+2x+1$ is $O(x^2)$
+\begin{align*}
+g(x) &= n^2+n^2+n^2\\
+ &= 3n^2
+\end{align*}
+$f(x)<g(x) \text{ when } x>1$
+\centering $\displaystyle\therefore C=3,k=1$
+\end{example}
+
+\begin{multicols}{2}
+\begin{definition}{Big-$\Omega$}\label{def:big-omega}
+	Let $f$ and $g$ be functions. $f(x)$ is $\Omega\big(g(x)\big)$ when there are
+	cosntants $C$ and $k$ such that:\[|f(x)|\geq C|g(x)|\] This is called the
+	best-case runtime of an algorithm
+\end{definition}
+\begin{definition}{Big-$\theta$}\label{def:big-theta}
+	Let $f$ and $g$ be functions. $f(x)$ is $\theta\big(g(x)\big)$ when:\[f(x)=O\big(g(x)\big)\land f(x)=\Omega\big(g(x)\big)\]
+	This is called the average-case runtime of an algorithm
+\end{definition}
+\end{multicols}
 \end{document}

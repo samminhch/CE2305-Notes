@@ -17,6 +17,10 @@
 \RequirePackage[document]{ragged2e}
 \RequirePackage{marginnote}
 \RequirePackage{booktabs}
+\RequirePackage[linesnumbered,ruled,vlined]{algorithm2e}
+\RestyleAlgo{ruled}
+\DontPrintSemicolon
+\SetAlgoLined
 
 % graphics
 \RequirePackage{emoji}
