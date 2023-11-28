@@ -17,6 +17,7 @@
 \RequirePackage[document]{ragged2e}
 \RequirePackage{marginnote}
 \RequirePackage{booktabs}
+\RequirePackage{caption}
 \RequirePackage[linesnumbered,ruled,vlined]{algorithm2e}
 \RestyleAlgo{ruled}
 \DontPrintSemicolon
@@ -30,6 +31,7 @@
 \RequirePackage{amsmath, amssymb, amsthm, amsfonts}
 \RequirePackage{arydshln}
 \RequirePackage{hyperref}
+\RequirePackage{tikz}
 \hypersetup{
     colorlinks=true,
     linkcolor=black

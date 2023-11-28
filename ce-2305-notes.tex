@@ -5,6 +5,7 @@
 \newenvironment{note}[1]{\begin{YellowBox}{Note}{#1}}{\end{YellowBox}}
 \newenvironment{theorem}[1]{\begin{GrayBox}{Theorem}{#1}}{\end{GrayBox}}
 \newenvironment{practice}[1]{\begin{PurpleBox}{Practice}{#1}}{\end{PurpleBox}}
+\newenvironment{graph}{\begin{tikzpicture}[node distance={0.65in}, thick, auto=center,every node/.style={draw,circle,fill=green!10}]}{\end{tikzpicture}}
 
 \newcommand{\br}{
 	\begin{center}
@@ -63,7 +64,7 @@ email me at \newline\href{mailto:minh.nguyen7@utdallas.edu}{mdn220004@utdallas.e
 	\end{tabular}
 \end{table}
 
-Propositons can be combined to form another proposition with the use of \textit{logical operators}
+Propositions can be combined to form another proposition with the use of \textit{logical operators}
 \begin{note}{}
 	Common labels for propositions in discrete mathematics include letters like $P,Q,R,S$\ldots
 \end{note}
@@ -88,7 +89,7 @@ Propositons can be combined to form another proposition with the use of \textit{
 \begin{note}{Logical Operator Precedence}\label{order-of-operations}
 	Order matters when it comes to evaluating logical operators:
 	\begin{enumerate}
-		\item negaiton
+		\item negation
 		\item conjunction
 		\item disjunctions
 		\item conditionals
@@ -287,7 +288,7 @@ This can be proven with the use of a truth table \emoji{smiling-face-with-hearts
 	\end{definition}
 
 	\begin{definition}{Premise}\label{def:premise}
-		The preceeding statements of a mathematical argument that lead to a conclusion
+		The preceding statements of a mathematical argument that lead to a conclusion
 	\end{definition}
 
 	\begin{definition}{Fallacy}
@@ -415,7 +416,7 @@ The next page contains a table of inference rules
 	\end{itemize}
 	They are also referred to as ``Lemma'', ``Proposition'', or ``Corollary''
 \end{definition}
-There's many different ways of proving a theorem. Let's assume a conditional statement $P\implies Q$\ldots
+There are many different ways of proving a theorem. Let's assume a conditional statement $P\implies Q$\ldots
 \begin{multicols}{2}
 	\begin{definition}{Direct Proof}\label{def:direct-proof}
 		When the first step is the assumption that $P$ is
@@ -423,7 +424,7 @@ There's many different ways of proving a theorem. Let's assume a conditional sta
 	\end{definition}
 
 	\begin{definition}{Indirect Proof}\label{def:indirect-proof}
-		Proofs that do not start with the premimses and end with conclusion (the opposite of a direct proof). Ways of doing direct proofs involve \textit{proof by contraposition}, \textit{proof by contradiction}, and much more\ldots
+		Proofs that do not start with the premises and end with conclusion (the opposite of a direct proof). Ways of doing direct proofs involve \textit{proof by contraposition}, \textit{proof by contradiction}, and much more\ldots
 	\end{definition}
 
 	\begin{example}{Proof by Contraposition}\label{ex:contraposition-proof}
@@ -503,7 +504,7 @@ There's many different ways of proving a theorem. Let's assume a conditional sta
 	\end{theorem}
 
 	\begin{definition}{Subset ($\subseteq$)}
-		$A$ is a subset of $B$ if \textit{all elements of} $A$ are also containeed in $B$:
+		$A$ is a subset of $B$ if \textit{all elements of} $A$ are also contained in $B$:
 		\[A\subseteq B\iff\forall x.(x\in A\implies x\in B)\]
 	\end{definition}
 \end{multicols}
@@ -763,7 +764,7 @@ used in the field of \textit{computer science} to analyze algorithms.
 \begin{multicols}{2}
 	\begin{definition}{Big-$\Omega$}\label{def:big-omega}
 		Let $f$ and $g$ be functions. $f(x)$ is $\Omega\big(g(x)\big)$ when there are
-		cosntants $C$ and $k$ such that:\[|f(x)|\geq C|g(x)|\] This is called the
+		constants $C$ and $k$ such that:\[|f(x)|\geq C|g(x)|\] This is called the
 		best-case runtime of an algorithm
 	\end{definition}
 	\begin{definition}{Big-$\theta$}\label{def:big-theta}
@@ -771,4 +772,342 @@ used in the field of \textit{computer science} to analyze algorithms.
 		This is called the average-case runtime of an algorithm
 	\end{definition}
 \end{multicols}
+
+\newpage
+\section{Number Theory}
+\subsection{Division}
+\begin{definition}{Division}\label{def:division}
+	Let $a,b\in\mathbb{Z}$. $a$ divides $b$ ($a|b$) if there exists integer $c$ such that $a\times c=b$
+	\[a|b,a,b\in\mathbb{Z}\iff\exists c\in\mathbb{Z}.(a\times c=b)\]
+\end{definition}
+
+\section{Relations}
+\begin{definition}{Relation}
+	Given sets $A,B$, it's a subset of $A\times B$
+\end{definition}
+
+\begin{example}{}
+	\begin{align*}
+		R_1 & = \{(a,b)|a,b\in\mathbb{Z}\land a\leq b\}\subseteq\mathbb{Z}\times\mathbb{Z}        \\
+		R_2 & = \{(a,b)|a,b\in\mathbb{Z}\land a<b\}\subseteq\mathbb{Z}\times\mathbb{Z}            \\
+		R_3 & = \{(a,b)|a,b\in\mathbb{Z}\land a=b\}\subseteq\mathbb{Z}\times\mathbb{Z}            \\
+		R_4 & = \{(a,b)|a,b\in\mathbb{Z}\land a=b+\mathbb{Z}\}\subseteq\mathbb{Z}\times\mathbb{Z} \\
+		R_5 & = \{(a,b)|a,b\in\mathbb{Z}\land a|b\}\subseteq\mathbb{Z}\times\mathbb{Z}
+	\end{align*}
+\end{example}
+
+\begin{multicols}{2}
+	{
+		\begin{definition}{Reflexivity}
+			A relation $R$ on a set $A$ is \textit{reflexive} if and only if:
+			\[\forall x.\big(x\in A\implies(x,x)\in R\big)\]
+		\end{definition}
+	}
+	{
+		\begin{example}{}
+			\begin{align*}
+				A & = \{1,2,3\}                                      \\
+				R & = \{(1,1),(2,2),(1,3),(3,3)\}                    \\
+				R & = \{(3,3),(1,3),(1,1)\}\gets\text{not reflexive}
+			\end{align*}
+		\end{example}
+
+	}
+\end{multicols}
+\begin{definition}{Symmetry}
+	Relation $R$ on a set $A$ is symmetric if and only if
+	\[\forall x\forall y.\big((x,y)\in R\implies(y,x)\in R\big)\]
+\end{definition}
+
+\begin{definition}{Anti-Symmetry}
+	Relation $R$ on a set $A$ is antisymmetric if and only if
+	\[\forall x\forall y.\big((x,y)\in R\land(y,x)\in R\implies(y,x)\in x=y)\]
+\end{definition}
+\begin{example}{}
+	\centering
+	\begin{tabular}{cl}
+		\multirow{2}{*}{$\leq$}                                                                      & Not symmetric: $3\leq5,5\not\leq3$                   \\
+		                                                                                             & Antisymmetric: $a\leq b,b\leq a\implies a=b$         \\
+		\hdashline
+		\multirow{2}{*}{$>$}                                                                         & Not symmetric: $5>3,3\not>5$                         \\
+		                                                                                             & Antisymmetric: $a>b,b>a\implies a=b$                 \\
+		\hdashline
+		\multirow{2}{*}{$=$}                                                                         & Symmetric                                            \\
+		                                                                                             & Antisymmetric: $a=b,b=a\implies a=b$                 \\
+		\hdashline
+		\multirow{2}{*}{$R=\{(a,b)|a,b\in\mathbb{Z}\land a=-b\}\subseteq\mathbb{Z}\times\mathbb{Z}$} & Symmetric: $(a,-a)\in R\implies (-a,a)\in R$         \\
+		                                                                                             & Not antisymmetric: $(a,-a)\land(-a,a)\in R,a\neq -a$ \\
+		\hdashline
+		\multirow{2}{*}{Let $A=\{1,2,3\}$}                                                           & Not symmetric: $(1,3)\in R,(3,1)\notin R$            \\
+		$R=\{(2,3),(3,2),(1,3)\}$                                                                    & Not antisymmetric: $(2,3),(3,2)\in R,2\neq 3$        \\
+		\hdashline
+	\end{tabular}
+\end{example}
+
+\begin{definition}{Transitive}
+	A relation $R$ on set $A$ such that
+	\[\forall x\forall y\forall z.\big((x,y)\in R\land(y,z)\in R\implies(x,z)\in R\big)\]
+\end{definition}
+
+\begin{example}{}
+	\begin{align*}
+		A & = \{a,b,c\}                         \\
+		R & = \{(a,b),(a,a),(b,b),(b,c),(c,b)\} \\
+	\end{align*}
+	It's nothing, nada, it's\ldots disappointing
+\end{example}
+
+\begin{note}{Equivalence Relation}
+	A relation that is reflexive, symmetric, and transitive
+\end{note}
+
+\newpage
+\section{Graphs}
+\marginnote{What's a graph without its nodes?}
+\begin{definition}{Graph}
+	Denoted by $G=(V,E)$, consists of a non-empty set of \textit vertices (or nodes) $V$ and a set of edges $E$
+\end{definition}
+\begin{multicols}{2}
+    \begin{definition}{Adjacent Verticies (Undirected)}
+    When the endpoints of an edge $e$ are vertices $a$ and $b$, the verticies
+    are considered to be \textit{adjacent} (or \textit{neighbors}) with one
+    another. 
+    \bl
+    That edge is called an \textit{incident} edge, \textit{connecting} verticies
+    $a$ and $b$
+\end{definition}
+    \begin{definition}{Adjacent Verticies (Directed)}
+        When $(a,b)$ is an edge of a directed graph $G$, $a$ is \textit{adjacent to}
+        $b$, and $a$ is \textit{adjacent from} $b$.
+        \bl
+        Vertex $a$ is called the \textit{initial vertex}, and $b$ is called
+        the \textit{terminal} or \textit{end vertex} of $(u,v)$
+    \end{definition}
+\end{multicols}
+
+\begin{definition}{Neighborhood $\big(N(v)\big)$}
+    ``The set of all neighbors of $u$'' of a graph $G=(V,E)$, denoted by ($N(v)$)
+    \bl
+    If $A$ is a subset of $V$, $N(A)$ is the set of verticies in $G$ that are
+    adjacent to at least one vertex in $A$: \[V=\bigcup_{v\in A}N(v)\]
+\end{definition}
+
+\begin{multicols}{2}
+    \begin{definition}{Degree (Undirected Graph) \big(\texttt{deg}($v$)\big)}
+    The number of edges incident with it. A loop contributes \textit{twice} to
+    the degree of that vertex
+\end{definition}
+    \begin{definition}{Degree (Directed Graph) \big(\texttt{deg}$^{\pm}$($v$)\big)}
+    The number of edges incident with it. A loop contributes \textit{twice} to
+    the degree of that vertex
+\end{definition}
+\end{multicols}
+
+\begin{definition}{Infinite Graphs}
+	If $|V|=\infty$, then the graph is referred to as an \textit{infinite} graph,
+	otherwise it's called a \textit{finite} graph
+\end{definition}
+
+
+\begin{example}{Neighborhoods and Degrees}
+    \centering
+    \captionof{figure}{Neighborhoods Example}\label{fig:neighborhoods}
+    \begin{graph}
+        \node(1) {\emoji{apple}};
+        \node[right of=1] (2) {\emoji{banana}};
+        \node[below of=1] (3) {\emoji{mango}};
+        \node[right of=2] (4) {\emoji{orange}};
+        \node[right of=3] (5) {\emoji{coconut}};
+        
+        \draw(1) to [bend right] (2);
+        \draw(1) to (2);
+        \draw(2) to [bend right] (1);
+        \draw(1) to (3);
+        \draw(1) to (5);
+        \draw(2) to (3);
+        \draw(2) to (5);
+        \draw(2) to (4);
+        \draw(4) to (5);
+        \draw(4) to [in=270,out=0,looseness=4] (4);
+    \end{graph}
+    \bl
+    \captionof{table}{Table of Neighbors and Degrees}
+    \begin{tabular}{ccc}
+        \multicolumn{1}{c}{\textbf{Vertex}} &
+        \multicolumn{1}{c}{\textbf{Degree}} &
+        \multicolumn{1}{c}{\textbf{Neighborhood}} \\ 
+        \midrule
+        \emoji{mango} & 
+        2 & 
+        \{\emoji{apple},\emoji{banana}\} \\
+        \emoji{coconut} & 
+        3 & 
+        \{\emoji{apple},\emoji{banana},\emoji{orange}\} \\
+        \emoji{orange} & 
+        4 & 
+        \{\emoji{orange},\emoji{banana},\emoji{coconut}\} \\
+        \emoji{apple} & 
+        5 & 
+        \{\emoji{mango},\emoji{banana},\emoji{coconut}\} \\
+        \emoji{banana} & 
+        6 & 
+        \{\emoji{apple},\emoji{mango},\emoji{coconut},\emoji{orange}\} \\
+    \end{tabular}
+\end{example}
+
+\begin{note}{Sum of Degrees}
+    When adding the degrees of all verticies in graph $G=(V,E)$, you'll find
+    that each edge contributes \textit{two} to the sum of degrees, since
+    each edge is incident with exactly two verticies
+\end{note}
+
+\begin{theorem}{Handshake Theorem}
+	If $G=(v,E)$ is an undirected graph with $|E|=m$ edges, then
+    \[\sum_{v\in V}\texttt{deg($v$)}=\sum_{v\in V_1}\texttt{deg($v$)}+\sum_{v\in V_2}\texttt{deg($v$)}=2\times m\]
+    This applies even if multiple edges and loops are present
+\end{theorem}
+
+\begin{example}{Handshake}
+We can see this theorem in effect if we look back at
+\hyperref[fig:neighborhoods]{Figure 1}:
+    \begin{align*}
+        2\times m =& \sum_{v\in V}\texttt{deg($v$)}\\
+        =& 2 + 3 + 4 + 5 + 6\\
+        2\times m =& 20 \\
+        m =& 10
+    \end{align*}
+\end{example}
+
+\newpage
+\begin{multicols}{2}
+\begin{theorem}{Consequences of Handshaking}
+	In an undirected graph, the  sum of degree of nodes with odd degrees is
+    \textit{even}. 
+\end{theorem}
+\begin{theorem}{Directed Handshake}
+    Let $G=(V,E)$ be a directed graph: 
+    \[\sum_{v\in V}\texttt{deg}^-(v)=\sum_{v\in V}\texttt{deg}^+(v)=|E|\]
+\end{theorem}
+\end{multicols}
+
+\begin{table}[h!]
+	\centering
+	\caption{Graph Terminology}
+	\begin{tabular}{llll}
+		\multicolumn{1}{c}{\textbf{Type}}      &
+		\multicolumn{1}{c}{\textbf{Direction}} &
+		\multicolumn{1}{c}{\textbf{Edges}}     &
+		\multicolumn{1}{c}{\textbf{Loops}}                                   \\
+		\midrule
+		Simple Graph                           & Undirected & Singular & No  \\
+		Multigraph                             & Undirected & Multiple & No  \\
+		Pseudograph                            & Undirected & Multiple & Yes \\
+		Simple Directed Graph                  & Directed   & Singular & No  \\
+		Directed Multigraph                    & Directed   & Multiple & Yes \\
+		Mixed Graph                            & Both       & Multiple & Yes \\
+	\end{tabular}
+\end{table}
+
+\begin{multicols}{2}
+	\begin{minipage}{\linewidth}
+		\centering
+		\captionof{figure}{Simple Graph}
+		\begin{graph}
+			\node (1) {\emoji{apple}};
+			\node (2) [below of=1] {\emoji{banana}};
+			\node (3) [right of=1]{\emoji{cat}};
+			\node (4) at (0.85,-0.85) {\emoji{dog}};
+			\node (5) [below of=3] {\emoji{elephant}};
+
+			\draw (1) -- (3);
+			\draw (3) -- (4);
+			\draw (4) -- (2);
+			\draw (2) -- (5);
+		\end{graph}
+	\end{minipage}
+    \begin{minipage}{\linewidth}
+	\centering
+        \captionof{figure}{Multigraph}
+	\begin{graph}
+		\node (1) {\emoji{apple}};
+		\node (2) [below of=1] {\emoji{banana}};
+		\node (3) [right of=1]{\emoji{cat}};
+		\node (4) at (0.85,-0.85) {\emoji{dog}};
+		\node (5) [below of=3] {\emoji{elephant}};
+
+		\draw (1) -- (3);
+		\draw (1) -- (4);
+		\draw (2) -- (4);
+		\draw (4) -- (5);
+	\end{graph}
+    \end{minipage}
+    \begin{minipage}{\linewidth}
+	\centering
+        \captionof{figure}{Pseudograph}
+	\begin{graph}
+		\node (1) {\emoji{apple}};
+		\node (2) [below of=1] {\emoji{banana}};
+		\node (3) [right of=1]{\emoji{cat}};
+		\node (4) at (0.85,-0.85) {\emoji{dog}};
+		\node (5) [below of=3] {\emoji{elephant}};
+
+		\draw (1) -- (3);
+		\draw (1) -- (4);
+		\draw (2) -- (4);
+		\draw (4) -- (5);
+		\draw (5) to [out=270,in=330,looseness=5] (5);
+	\end{graph}
+    \end{minipage}
+    \begin{minipage}{\linewidth}
+	\centering
+    \captionof{figure}{Simple Directed Graph}
+	\begin{graph}
+		\node (1) {\emoji{apple}};
+		\node (2) [below of=1] {\emoji{banana}};
+		\node (3) [right of=1]{\emoji{cat}};
+		\node (4) at (0.85,-0.85) {\emoji{dog}};
+		\node (5) [below of=3] {\emoji{elephant}};
+
+		\draw[<-] (1) -- (3);
+		\draw[->] (1) -- (4);
+		\draw[<-] (2) -- (4);
+		\draw[->] (2) -- (5);
+	\end{graph}
+    \end{minipage}
+    \begin{minipage}{\linewidth}
+	\centering
+        \captionof{figure}{Directed Multigraph}
+	\begin{graph}
+		\node (1) {\emoji{apple}};
+		\node (2) [below of=1] {\emoji{banana}};
+		\node (3) [right of=1]{\emoji{cat}};
+		\node (4) at (0.85,-0.85) {\emoji{dog}};
+		\node (5) [below of=3] {\emoji{elephant}};
+
+		\draw[<->] (1) -- (3);
+		\draw[->] (1) -- (4);
+		\draw[->] (2) -- (4);
+		\draw[->] (4) -- (5);
+	\end{graph}
+    \end{minipage}
+    \begin{minipage}{\linewidth}
+	\centering
+        \captionof{figure}{Mixed Graph}
+	\begin{graph}
+		\node (1) {\emoji{apple}};
+		\node (2) [below of=1] {\emoji{banana}};
+		\node (3) [right of=1]{\emoji{cat}};
+		\node (4) at (0.85,-0.85) {\emoji{dog}};
+		\node (5) [below of=3] {\emoji{elephant}};
+
+		\draw (1) -- (3);
+		\draw[->] (1) -- (4);
+		\draw (2) -- (4);
+		\draw[->] (4) -- (5);
+        \draw[<-] (5) to [out=270,in=330,looseness=5] (5);
+	\end{graph}
+    \end{minipage}
+\end{multicols}
 \end{document}
+
+
