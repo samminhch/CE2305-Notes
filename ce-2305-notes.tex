@@ -467,7 +467,7 @@ There are many different ways of proving a theorem. Let's assume a conditional s
 \begin{table}[h!]\label{tab:important-sets}
 	\centering
 	\caption{Important Sets}
-	\begin{tabular}{cll}
+	\begin{tabular}{lll}
 		\multicolumn{1}{c}{\textbf{Set}}                           &
 		\multicolumn{1}{c}{\textbf{Expansion}}                     &
 		\multicolumn{1}{c}{\textbf{Description}}                         \\
@@ -775,10 +775,81 @@ used in the field of \textit{computer science} to analyze algorithms.
 
 \newpage
 \section{Number Theory}
-\subsection{Division}
 \begin{definition}{Division}\label{def:division}
 	Let $a,b\in\mathbb{Z}$. $a$ divides $b$ ($a|b$) if there exists integer $c$ such that $a\times c=b$
 	\[a|b,a,b\in\mathbb{Z}\iff\exists c\in\mathbb{Z}.(a\times c=b)\]
+\end{definition}
+
+\begin{theorem}{Basic Division Properties}
+	Let $a,b,c\in\mathbb{Z},a\neq 0$:
+	\begin{itemize}
+		\item $\displaystyle (a|b)\land(a|c)\implies a|(b+c)$
+		\item $\displaystyle a|b\implies \forall c\in\mathbb{Z}.\big(a|(b\times c)\big)$
+		\item $\displaystyle (a|b)\land(b|c)\implies a|c$
+	\end{itemize}
+\end{theorem}
+
+\begin{theorem}{Consequence of Division}
+	\[\forall a,b,c,m,n\in\mathbb{Z},a\neq0.\Big((a|b)\land(a|c)\implies\big(a|(mb+nc)\big)\Big)\]
+	Let $a,b,c,m,n$ be integers where $a\neq0$, and suppose $a|b\land a|c$.
+	Then, for any integers m and n, $a|mb+nc$.
+\end{theorem}
+
+\begin{theorem}{Division Algorithm}
+	Let $a\in\mathbb{Z},d\in\mathbb{Z}^+$. Then there are unique integers $q$
+	and $r$ where $0\leq r<d$ such that $a=q\times d+r$
+	\[\forall a,q,r\in\mathbb{Z},d\in\mathbb{Z}^+,0\leq r<d.(a=q\times d+r)\]
+\end{theorem}
+
+\begin{multicols}{2}
+	{
+		\begin{definition}{Quotient}
+			\[q=a\texttt{ div }d\]
+		\end{definition}
+		\begin{definition}{Congruency ($\equiv$)}
+			Let $a,b\in\mathbb{Z},m\in\mathbb{Z}^+$. $a$ is congruent to $b$ \texttt{mod} $m$ if\ldots
+			\begin{itemize}
+				\item$m|a-b$
+				\item$a \texttt{ mod } m\equiv b \texttt{ mod }m$
+				\item$k\in\mathbb{Z},a=b+k\times m$
+			\end{itemize}
+		\end{definition}
+	}
+	{
+		\begin{definition}{Remainder}
+			\[r=a\texttt{ mod }d\]
+		\end{definition}
+
+		\begin{theorem}{Preservation of Congruencies}
+			Let $a,b,c,d\in\mathbb{Z},m\in\mathbb{Z}^+$. If $a\equiv b\texttt{ mod } m\land c\equiv d\texttt{ mod } m$, then
+			\begin{itemize}
+				\item$a+c\equiv b+d\hspace{1em}(\texttt{mod } m)$
+				\item$a\times c\equiv b\times d\hspace{1em}(\texttt{mod } m)$
+			\end{itemize}
+		\end{theorem}
+	}
+\end{multicols}
+
+\section{Induction and Recursion}
+
+\begin{definition}{Proof via. Induction}
+    To prove that $P(n)$ is true for $n\in\mathbb{Z}^+$, we must complete these
+    two steps:
+    \begin{itemize}
+        \item \textbf{Basis Step:} Verify that $P(1)$ is \texttt{true}
+        \item \textbf{Inductive Step:} Show that 
+            $P(k)\implies P(k+1),k\in\mathbb{Z}^+$ is \texttt{true}
+    \end{itemize}
+\end{definition}
+
+\begin{definition}{Recursion}
+    A way to express a definition of an element in terms of itself. There's
+    two required steps to recursively define a function:
+    \begin{itemize}
+        \item \textbf{Basis Step:} Specify the value of the function at 0
+        \item \textbf{Recursive Step:} Specify a rule for finding its value at
+            an integer from its smaller values at smaller integers
+    \end{itemize}
 \end{definition}
 
 \section{Relations}
@@ -868,39 +939,39 @@ used in the field of \textit{computer science} to analyze algorithms.
 	Denoted by $G=(V,E)$, consists of a non-empty set of \textit vertices (or nodes) $V$ and a set of edges $E$
 \end{definition}
 \begin{multicols}{2}
-    \begin{definition}{Adjacent Verticies (Undirected)}
-    When the endpoints of an edge $e$ are vertices $a$ and $b$, the verticies
-    are considered to be \textit{adjacent} (or \textit{neighbors}) with one
-    another. 
-    \bl
-    That edge is called an \textit{incident} edge, \textit{connecting} verticies
-    $a$ and $b$
-\end{definition}
-    \begin{definition}{Adjacent Verticies (Directed)}
-        When $(a,b)$ is an edge of a directed graph $G$, $a$ is \textit{adjacent to}
-        $b$, and $a$ is \textit{adjacent from} $b$.
-        \bl
-        Vertex $a$ is called the \textit{initial vertex}, and $b$ is called
-        the \textit{terminal} or \textit{end vertex} of $(u,v)$
-    \end{definition}
+	\begin{definition}{Adjacent Verticies (Undirected)}
+		When the endpoints of an edge $e$ are vertices $a$ and $b$, the verticies
+		are considered to be \textit{adjacent} (or \textit{neighbors}) with one
+		another.
+		\bl
+		That edge is called an \textit{incident} edge, \textit{connecting} verticies
+		$a$ and $b$
+	\end{definition}
+	\begin{definition}{Adjacent Verticies (Directed)}
+		When $(a,b)$ is an edge of a directed graph $G$, $a$ is \textit{adjacent to}
+		$b$, and $a$ is \textit{adjacent from} $b$.
+		\bl
+		Vertex $a$ is called the \textit{initial vertex}, and $b$ is called
+		the \textit{terminal} or \textit{end vertex} of $(u,v)$
+	\end{definition}
 \end{multicols}
 
 \begin{definition}{Neighborhood $\big(N(v)\big)$}
-    ``The set of all neighbors of $u$'' of a graph $G=(V,E)$, denoted by ($N(v)$)
-    \bl
-    If $A$ is a subset of $V$, $N(A)$ is the set of verticies in $G$ that are
-    adjacent to at least one vertex in $A$: \[V=\bigcup_{v\in A}N(v)\]
+	``The set of all neighbors of $u$'' of a graph $G=(V,E)$, denoted by ($N(v)$)
+	\bl
+	If $A$ is a subset of $V$, $N(A)$ is the set of verticies in $G$ that are
+	adjacent to at least one vertex in $A$: \[V=\bigcup_{v\in A}N(v)\]
 \end{definition}
 
 \begin{multicols}{2}
-    \begin{definition}{Degree (Undirected Graph) \big(\texttt{deg}($v$)\big)}
-    The number of edges incident with it. A loop contributes \textit{twice} to
-    the degree of that vertex
-\end{definition}
-    \begin{definition}{Degree (Directed Graph) \big(\texttt{deg}$^{\pm}$($v$)\big)}
-    The number of edges incident with it. A loop contributes \textit{twice} to
-    the degree of that vertex
-\end{definition}
+	\begin{definition}{Degree (Undirected Graph) \big(\texttt{deg}($v$)\big)}
+		The number of edges incident with it. A loop contributes \textit{twice} to
+		the degree of that vertex
+	\end{definition}
+	\begin{definition}{Degree (Directed Graph) \big(\texttt{deg}$^{\pm}$($v$)\big)}
+		The number of edges incident with it. A loop contributes \textit{twice} to
+		the degree of that vertex
+	\end{definition}
 \end{multicols}
 
 \begin{definition}{Infinite Graphs}
@@ -910,84 +981,84 @@ used in the field of \textit{computer science} to analyze algorithms.
 
 
 \begin{example}{Neighborhoods and Degrees}
-    \centering
-    \captionof{figure}{Neighborhoods Example}\label{fig:neighborhoods}
-    \begin{graph}
-        \node(1) {\emoji{apple}};
-        \node[right of=1] (2) {\emoji{banana}};
-        \node[below of=1] (3) {\emoji{mango}};
-        \node[right of=2] (4) {\emoji{orange}};
-        \node[right of=3] (5) {\emoji{coconut}};
-        
-        \draw(1) to [bend right] (2);
-        \draw(1) to (2);
-        \draw(2) to [bend right] (1);
-        \draw(1) to (3);
-        \draw(1) to (5);
-        \draw(2) to (3);
-        \draw(2) to (5);
-        \draw(2) to (4);
-        \draw(4) to (5);
-        \draw(4) to [in=270,out=0,looseness=4] (4);
-    \end{graph}
-    \bl
-    \captionof{table}{Table of Neighbors and Degrees}
-    \begin{tabular}{ccc}
-        \multicolumn{1}{c}{\textbf{Vertex}} &
-        \multicolumn{1}{c}{\textbf{Degree}} &
-        \multicolumn{1}{c}{\textbf{Neighborhood}} \\ 
-        \midrule
-        \emoji{mango} & 
-        2 & 
-        \{\emoji{apple},\emoji{banana}\} \\
-        \emoji{coconut} & 
-        3 & 
-        \{\emoji{apple},\emoji{banana},\emoji{orange}\} \\
-        \emoji{orange} & 
-        4 & 
-        \{\emoji{orange},\emoji{banana},\emoji{coconut}\} \\
-        \emoji{apple} & 
-        5 & 
-        \{\emoji{mango},\emoji{banana},\emoji{coconut}\} \\
-        \emoji{banana} & 
-        6 & 
-        \{\emoji{apple},\emoji{mango},\emoji{coconut},\emoji{orange}\} \\
-    \end{tabular}
+	\centering
+	\captionof{figure}{Neighborhoods Example}\label{fig:neighborhoods}
+	\begin{graph}
+		\node(1) {\emoji{apple}};
+		\node[right of=1] (2) {\emoji{banana}};
+		\node[below of=1] (3) {\emoji{mango}};
+		\node[right of=2] (4) {\emoji{orange}};
+		\node[right of=3] (5) {\emoji{coconut}};
+
+		\draw(1) to [bend right] (2);
+		\draw(1) to (2);
+		\draw(2) to [bend right] (1);
+		\draw(1) to (3);
+		\draw(1) to (5);
+		\draw(2) to (3);
+		\draw(2) to (5);
+		\draw(2) to (4);
+		\draw(4) to (5);
+		\draw(4) to [in=270,out=0,looseness=4] (4);
+	\end{graph}
+	\bl
+	\captionof{table}{Table of Neighbors and Degrees}
+	\begin{tabular}{ccc}
+		\multicolumn{1}{c}{\textbf{Vertex}} &
+		\multicolumn{1}{c}{\textbf{Degree}} &
+		\multicolumn{1}{c}{\textbf{Neighborhood}}                      \\
+		\midrule
+		\emoji{mango}                       &
+		2                                   &
+		\{\emoji{apple},\emoji{banana}\}                               \\
+		\emoji{coconut}                     &
+		3                                   &
+		\{\emoji{apple},\emoji{banana},\emoji{orange}\}                \\
+		\emoji{orange}                      &
+		4                                   &
+		\{\emoji{orange},\emoji{banana},\emoji{coconut}\}              \\
+		\emoji{apple}                       &
+		5                                   &
+		\{\emoji{mango},\emoji{banana},\emoji{coconut}\}               \\
+		\emoji{banana}                      &
+		6                                   &
+		\{\emoji{apple},\emoji{mango},\emoji{coconut},\emoji{orange}\} \\
+	\end{tabular}
 \end{example}
 
 \begin{note}{Sum of Degrees}
-    When adding the degrees of all verticies in graph $G=(V,E)$, you'll find
-    that each edge contributes \textit{two} to the sum of degrees, since
-    each edge is incident with exactly two verticies
+	When adding the degrees of all verticies in graph $G=(V,E)$, you'll find
+	that each edge contributes \textit{two} to the sum of degrees, since
+	each edge is incident with exactly two verticies
 \end{note}
 
 \begin{theorem}{Handshake Theorem}
 	If $G=(v,E)$ is an undirected graph with $|E|=m$ edges, then
-    \[\sum_{v\in V}\texttt{deg($v$)}=\sum_{v\in V_1}\texttt{deg($v$)}+\sum_{v\in V_2}\texttt{deg($v$)}=2\times m\]
-    This applies even if multiple edges and loops are present
+	\[\sum_{v\in V}\texttt{deg($v$)}=\sum_{v\in V_1}\texttt{deg($v$)}+\sum_{v\in V_2}\texttt{deg($v$)}=2\times m\]
+	This applies even if multiple edges and loops are present
 \end{theorem}
 
 \begin{example}{Handshake}
-We can see this theorem in effect if we look back at
-\hyperref[fig:neighborhoods]{Figure 1}:
-    \begin{align*}
-        2\times m =& \sum_{v\in V}\texttt{deg($v$)}\\
-        =& 2 + 3 + 4 + 5 + 6\\
-        2\times m =& 20 \\
-        m =& 10
-    \end{align*}
+	We can see this theorem in effect if we look back at
+	\hyperref[fig:neighborhoods]{Figure 1}:
+	\begin{align*}
+		2\times m = & \sum_{v\in V}\texttt{deg($v$)} \\
+		=           & 2 + 3 + 4 + 5 + 6              \\
+		2\times m = & 20                             \\
+		m =         & 10
+	\end{align*}
 \end{example}
 
 \newpage
 \begin{multicols}{2}
-\begin{theorem}{Consequences of Handshaking}
-	In an undirected graph, the  sum of degree of nodes with odd degrees is
-    \textit{even}. 
-\end{theorem}
-\begin{theorem}{Directed Handshake}
-    Let $G=(V,E)$ be a directed graph: 
-    \[\sum_{v\in V}\texttt{deg}^-(v)=\sum_{v\in V}\texttt{deg}^+(v)=|E|\]
-\end{theorem}
+	\begin{theorem}{Consequences of Handshaking}
+		In an undirected graph, the  sum of degree of nodes with odd degrees is
+		\textit{even}.
+	\end{theorem}
+	\begin{theorem}{Directed Handshake}
+		Let $G=(V,E)$ be a directed graph:
+		\[\sum_{v\in V}\texttt{deg}^-(v)=\sum_{v\in V}\texttt{deg}^+(v)=|E|\]
+	\end{theorem}
 \end{multicols}
 
 \begin{table}[h!]
@@ -1025,89 +1096,87 @@ We can see this theorem in effect if we look back at
 			\draw (2) -- (5);
 		\end{graph}
 	\end{minipage}
-    \begin{minipage}{\linewidth}
-	\centering
-        \captionof{figure}{Multigraph}
-	\begin{graph}
-		\node (1) {\emoji{apple}};
-		\node (2) [below of=1] {\emoji{banana}};
-		\node (3) [right of=1]{\emoji{cat}};
-		\node (4) at (0.85,-0.85) {\emoji{dog}};
-		\node (5) [below of=3] {\emoji{elephant}};
+	\begin{minipage}{\linewidth}
+		\centering
+		\captionof{figure}{Multigraph}
+		\begin{graph}
+			\node (1) {\emoji{apple}};
+			\node (2) [below of=1] {\emoji{banana}};
+			\node (3) [right of=1]{\emoji{cat}};
+			\node (4) at (0.85,-0.85) {\emoji{dog}};
+			\node (5) [below of=3] {\emoji{elephant}};
 
-		\draw (1) -- (3);
-		\draw (1) -- (4);
-		\draw (2) -- (4);
-		\draw (4) -- (5);
-	\end{graph}
-    \end{minipage}
-    \begin{minipage}{\linewidth}
-	\centering
-        \captionof{figure}{Pseudograph}
-	\begin{graph}
-		\node (1) {\emoji{apple}};
-		\node (2) [below of=1] {\emoji{banana}};
-		\node (3) [right of=1]{\emoji{cat}};
-		\node (4) at (0.85,-0.85) {\emoji{dog}};
-		\node (5) [below of=3] {\emoji{elephant}};
+			\draw (1) -- (3);
+			\draw (1) -- (4);
+			\draw (2) -- (4);
+			\draw (4) -- (5);
+		\end{graph}
+	\end{minipage}
+	\begin{minipage}{\linewidth}
+		\centering
+		\captionof{figure}{Pseudograph}
+		\begin{graph}
+			\node (1) {\emoji{apple}};
+			\node (2) [below of=1] {\emoji{banana}};
+			\node (3) [right of=1]{\emoji{cat}};
+			\node (4) at (0.85,-0.85) {\emoji{dog}};
+			\node (5) [below of=3] {\emoji{elephant}};
 
-		\draw (1) -- (3);
-		\draw (1) -- (4);
-		\draw (2) -- (4);
-		\draw (4) -- (5);
-		\draw (5) to [out=270,in=330,looseness=5] (5);
-	\end{graph}
-    \end{minipage}
-    \begin{minipage}{\linewidth}
-	\centering
-    \captionof{figure}{Simple Directed Graph}
-	\begin{graph}
-		\node (1) {\emoji{apple}};
-		\node (2) [below of=1] {\emoji{banana}};
-		\node (3) [right of=1]{\emoji{cat}};
-		\node (4) at (0.85,-0.85) {\emoji{dog}};
-		\node (5) [below of=3] {\emoji{elephant}};
+			\draw (1) -- (3);
+			\draw (1) -- (4);
+			\draw (2) -- (4);
+			\draw (4) -- (5);
+			\draw (5) to [out=270,in=330,looseness=5] (5);
+		\end{graph}
+	\end{minipage}
+	\begin{minipage}{\linewidth}
+		\centering
+		\captionof{figure}{Simple Directed Graph}
+		\begin{graph}
+			\node (1) {\emoji{apple}};
+			\node (2) [below of=1] {\emoji{banana}};
+			\node (3) [right of=1]{\emoji{cat}};
+			\node (4) at (0.85,-0.85) {\emoji{dog}};
+			\node (5) [below of=3] {\emoji{elephant}};
 
-		\draw[<-] (1) -- (3);
-		\draw[->] (1) -- (4);
-		\draw[<-] (2) -- (4);
-		\draw[->] (2) -- (5);
-	\end{graph}
-    \end{minipage}
-    \begin{minipage}{\linewidth}
-	\centering
-        \captionof{figure}{Directed Multigraph}
-	\begin{graph}
-		\node (1) {\emoji{apple}};
-		\node (2) [below of=1] {\emoji{banana}};
-		\node (3) [right of=1]{\emoji{cat}};
-		\node (4) at (0.85,-0.85) {\emoji{dog}};
-		\node (5) [below of=3] {\emoji{elephant}};
+			\draw[<-] (1) -- (3);
+			\draw[->] (1) -- (4);
+			\draw[<-] (2) -- (4);
+			\draw[->] (2) -- (5);
+		\end{graph}
+	\end{minipage}
+	\begin{minipage}{\linewidth}
+		\centering
+		\captionof{figure}{Directed Multigraph}
+		\begin{graph}
+			\node (1) {\emoji{apple}};
+			\node (2) [below of=1] {\emoji{banana}};
+			\node (3) [right of=1]{\emoji{cat}};
+			\node (4) at (0.85,-0.85) {\emoji{dog}};
+			\node (5) [below of=3] {\emoji{elephant}};
 
-		\draw[<->] (1) -- (3);
-		\draw[->] (1) -- (4);
-		\draw[->] (2) -- (4);
-		\draw[->] (4) -- (5);
-	\end{graph}
-    \end{minipage}
-    \begin{minipage}{\linewidth}
-	\centering
-        \captionof{figure}{Mixed Graph}
-	\begin{graph}
-		\node (1) {\emoji{apple}};
-		\node (2) [below of=1] {\emoji{banana}};
-		\node (3) [right of=1]{\emoji{cat}};
-		\node (4) at (0.85,-0.85) {\emoji{dog}};
-		\node (5) [below of=3] {\emoji{elephant}};
+			\draw[<->] (1) -- (3);
+			\draw[->] (1) -- (4);
+			\draw[->] (2) -- (4);
+			\draw[->] (4) -- (5);
+		\end{graph}
+	\end{minipage}
+	\begin{minipage}{\linewidth}
+		\centering
+		\captionof{figure}{Mixed Graph}
+		\begin{graph}
+			\node (1) {\emoji{apple}};
+			\node (2) [below of=1] {\emoji{banana}};
+			\node (3) [right of=1]{\emoji{cat}};
+			\node (4) at (0.85,-0.85) {\emoji{dog}};
+			\node (5) [below of=3] {\emoji{elephant}};
 
-		\draw (1) -- (3);
-		\draw[->] (1) -- (4);
-		\draw (2) -- (4);
-		\draw[->] (4) -- (5);
-        \draw[<-] (5) to [out=270,in=330,looseness=5] (5);
-	\end{graph}
-    \end{minipage}
+			\draw (1) -- (3);
+			\draw[->] (1) -- (4);
+			\draw (2) -- (4);
+			\draw[->] (4) -- (5);
+			\draw[<-] (5) to [out=270,in=330,looseness=5] (5);
+		\end{graph}
+	\end{minipage}
 \end{multicols}
 \end{document}
-
-
