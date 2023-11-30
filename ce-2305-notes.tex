@@ -833,24 +833,156 @@ used in the field of \textit{computer science} to analyze algorithms.
 \section{Induction and Recursion}
 
 \begin{definition}{Proof via. Induction}
-    To prove that $P(n)$ is true for $n\in\mathbb{Z}^+$, we must complete these
-    two steps:
-    \begin{itemize}
-        \item \textbf{Basis Step:} Verify that $P(1)$ is \texttt{true}
-        \item \textbf{Inductive Step:} Show that 
-            $P(k)\implies P(k+1),k\in\mathbb{Z}^+$ is \texttt{true}
-    \end{itemize}
+	To prove that $P(n)$ is true for $n\in\mathbb{Z}^+$, we must complete these
+	two steps:
+	\begin{itemize}
+		\item \textbf{Basis Step:} Verify that $P(1)$ is \texttt{true}
+		\item \textbf{Inductive Step:} Show that
+		      $P(k)\implies P(k+1),k\in\mathbb{Z}^+$ is \texttt{true}
+	\end{itemize}
 \end{definition}
 
 \begin{definition}{Recursion}
-    A way to express a definition of an element in terms of itself. There's
-    two required steps to recursively define a function:
-    \begin{itemize}
-        \item \textbf{Basis Step:} Specify the value of the function at 0
-        \item \textbf{Recursive Step:} Specify a rule for finding its value at
-            an integer from its smaller values at smaller integers
-    \end{itemize}
+	A way to express a definition of an element in terms of itself. There's
+	two required steps to recursively define a function:
+	\begin{itemize}
+		\item \textbf{Basis Step:} Specify the value of the function at 0
+		\item \textbf{Recursive Step:} Specify a rule for finding its value at
+		      an integer from its smaller values at smaller integers
+	\end{itemize}
 \end{definition}
+
+\section{Counting}
+\subsection{Counting Basics}
+\marginnote{Think of nested \texttt{for} loops}
+\begin{theorem}{The Product Rule}
+	Suppose a procedure can be broken down into a sequence of multiple tasks.
+	If there are $n_1$ ways to do the first task, and for each task $k\in n_1$
+	there are $n_2$ and continuing on until with the final task having $n_a$
+	ways to do that task,  then there are \[n_1\times n_2\times\cdots\times n_a\]
+	ways to do that procedure.
+\end{theorem}
+
+\begin{example}{Product Rule}
+	An ice-cream shop has 12 different types of cones, and 32 flavors of ice-cream.
+	What is the number of unique single-scoop ice-creams the ice-cream shop can
+	serve?
+	\br{}
+	For each ice-cream cone there are 32 unique flavors of ice-cream that can
+	be served with it. This means that there are\[12\times 32=384\] unique
+	single-scoop ice-cream combinations that the shop can serve.
+\end{example}
+
+\newpage
+\marginnote{Think of sequental \texttt{for} loops}
+\begin{theorem}{The Sum Rule}
+	Suppose a procedure can be broken down into a sequence of multiple tasks.
+	If a task can be done in one of $n_1$ ways, or one of $n_2$ ways, or so
+	on and so forth until one of $n_a$ ways, then there are
+	\[n_1+n_2+\cdots+n_a\] wasy to do the task.
+\end{theorem}
+
+\begin{example}{Sum Rule}
+	You spot three potential people to steal wallets from. The first person's
+	wallet has 4 different types of credit / reward cards, the second person
+	has 18 (wow that's a large wallet!), and the third only has one. However,
+	you can only take one card in the wallet that you choose. How many possible
+	cards do you have to steal?
+	\br
+	\[4+18+1=23\]
+	different cards to rob \emoji{smiling-imp}
+\end{example}
+
+\subsection{Pigeonhole Principle}
+\begin{multicols}{2}
+	\begin{theorem}{The Pigeonhole Principle}
+		If $k\in\mathbb{Z}^+$ and $k+1$ or more objects are placed into $k$
+		containers, then there's at least one container containing more than 1
+		object.
+	\end{theorem}
+	\begin{theorem}{Pigeonhole Consequence I}
+		A function $f$ from a set of $k+1$ elements to a set of $k$ elements
+		will \textit{never be} one-to-one
+	\end{theorem}
+\end{multicols}
+
+\begin{example}{Pigeonhole and Ice-cream I}
+	For a total count of 23 scoops of ice-cream to be present in 22 cones,
+	there must be at least one cone with two ice-cream scoops
+\end{example}
+
+\begin{multicols}{2}
+	\begin{theorem}{Generalized Pigeonhole Principle}
+		If $N$ objects are placed into $k$ containers, then there must be at least
+		be one box containing at least $N/k$ objects
+		\[\left\lceil\frac{N}{k}\right\rceil\geq m\]
+	\end{theorem}
+	\begin{example}{Pigeons and Cards}
+		From a standard deck of 52 playing cards, how many need to be drawn for
+		there to be at least 5 cards in the same suite?
+		\[\left\lceil\frac{N}{4}\geq5\right\rceil=21\]
+	\end{example}
+\end{multicols}
+\begin{theorem}{Pigeonhole Consequence II}
+	Every sequence of $n^2+1$ distinct real numbers contains a subsequence
+	of length $n+1$ that is either strictly increasing or decreasing
+\end{theorem}
+
+\subsection{Permutations and Combinations}
+\begin{multicols}{2}
+	\begin{definition}{Permutation}
+		A set of distinct objects in an ordered arragement. An ordered arrangement
+		of $n$ elements of a set is called an \textit{$n$-permutation}
+	\end{definition}
+	\begin{example}{$S=$\{\emoji{apple},\emoji{banana},\emoji{shark}\}}
+		\begin{itemize}
+			\item\{\emoji{banana},\emoji{shark},\emoji{apple}\} is a permutation
+			\item\{\emoji{shark},\emoji{apple}\} is a 2-permutation
+		\end{itemize}
+	\end{example}
+\end{multicols}
+\begin{theorem}{Number of R-Permutations}
+    If $n\in\mathbb{Z}^+,r\in\mathbb{Z}$ where $1\leq r\leq n$, then there are
+    \[P(n,r)=n\times(n-1)\times(n-1)\ldots\times(n-r+1)\]
+    $r$-permutations with a set of $n$ distinct elements
+\end{theorem}
+
+\begin{note}{Simplification of the theorem}
+    The theorem can be simplified (and more commonly used) like this:
+    \[\forall n,r\in\mathbb{Z}.\left(P(n,r)=\frac{n!}{(n-r)!},0\leq r\leq n\right)\]
+\end{note}
+\begin{multicols}{2}
+    \begin{definition}{Combination}
+        An unordered subset with $r$ amoutn of elements from a set 
+    \end{definition}
+    \begin{example}{$S=$\{\emoji{shrimp},\emoji{cooking},\emoji{rice}\}}
+    \begin{itemize}
+        \item \{\emoji{shrimp},\emoji{rice}\} is a combination
+        \item \{\emoji{shrimp},\emoji{cooking}\} is a combination as well
+    \end{itemize}
+    \end{example}
+\end{multicols}
+
+\begin{note}{Combinations vs. Permutations}
+    \[S=\{\text{\emoji{cow},\emoji{chicken},\emoji{turkey}}\}\]
+    \begin{align*}
+        \{\text{\emoji{cow},\emoji{turkey}}\} && \{\text{\emoji{turkey},\emoji{cow}}\}
+    \end{align*}
+    That would be 2 permutations, but \textit{only one} combination
+\end{note}
+
+\begin{theorem}{Number of combinations}
+    \[\forall n,r\in\mathbb{Z}.\left(C(n,r)=C(n,n-r)=\frac{n!}{r!\left(n-r\right)!},0\leq r\leq n\right)\]
+\end{theorem}
+
+\marginnote{factorials make everything big!}
+\begin{example}{Permutations}
+    How many unique ways are there to select a first, second, and third place
+    winners in a contest with 15 contestants?
+    \br
+    \[P(15,3)=\frac{(15)!}{\left((15)-(3)\right)!}=2730\]
+    different ways!
+\end{example}
 
 \section{Relations}
 \begin{definition}{Relation}
@@ -965,12 +1097,13 @@ used in the field of \textit{computer science} to analyze algorithms.
 
 \begin{multicols}{2}
 	\begin{definition}{Degree (Undirected Graph) \big(\texttt{deg}($v$)\big)}
-		The number of edges incident with it. A loop contributes \textit{twice} to
-		the degree of that vertex
+		The number of edges incident with vertex $v$. A loop contributes
+		\textit{twice} to the count
 	\end{definition}
 	\begin{definition}{Degree (Directed Graph) \big(\texttt{deg}$^{\pm}$($v$)\big)}
-		The number of edges incident with it. A loop contributes \textit{twice} to
-		the degree of that vertex
+		\texttt{deg}$^-(v)$ number of edges pointing into $v$
+		\newline
+		\texttt{deg}$^+(v)$ number of edges pointing out from $v$
 	\end{definition}
 \end{multicols}
 
@@ -1176,6 +1309,60 @@ used in the field of \textit{computer science} to analyze algorithms.
 			\draw (2) -- (4);
 			\draw[->] (4) -- (5);
 			\draw[<-] (5) to [out=270,in=330,looseness=5] (5);
+		\end{graph}
+	\end{minipage}
+\end{multicols}
+\newpage
+\begin{table}[h!]
+	\centering
+	\caption{Special Graphs}
+	\begin{tabular}{ll}
+		\multicolumn{1}{c}{\textbf{Graph}} &
+		\multicolumn{1}{c}{\textbf{Definition}}                                                                          \\
+		\midrule
+		Complete Graph                     &
+		For $n$ nodes, there exists \textit{exactly one} edge between any
+		pair of nodes                                                                                                    \\
+		Cycles Graph                       &
+		\parbox{30em}{For $n\geq3$, the graph $C_n$ consists of path: $(v_1,v_2),(v_2,v_2)\ldots,(v_{n-1},v_n),(v_n,1)$} \\
+		Bipartite Graph                    &
+		\parbox{30em}{A simple graph $G=(V,E)$ such that $V$ can be partitioned into
+		two disjoint subsets $V_1$ and $V_2$}                                                                            \\
+		Complete Bipartite Graph           &
+		\parbox{30em}{A bipartite graph where $(u,v), u\in V_1,v\in V_2$}                                                \\
+		Subgraph                           & Let $G=(V,E)$. $H=(A,B)$ is a subgraph of $G$ if
+		$A\subseteq V\land B\subseteq E$
+	\end{tabular}
+\end{table}
+\begin{multicols}{2}
+	\begin{minipage}{\linewidth}
+		\centering
+		\captionof{figure}{Complete Graph}
+		\begin{graph}
+			\node (1) {\emoji{apple}};
+			\node (2) [below of=1] {\emoji{banana}};
+			\node (3) [right of=1]{\emoji{cat}};
+			\node (4) [below of=3] {\emoji{elephant}};
+
+			\draw(1) to (2);
+			\draw(1) to (3);
+			\draw(1) to (4);
+			\draw(2) to (3);
+			\draw(2) to (4);
+			\draw(3) to (4);
+		\end{graph}
+	\end{minipage}
+	\begin{minipage}{\linewidth}
+		\centering
+		\captionof{figure}{Cycles Graph}
+		\begin{graph}
+			\node (1) {\emoji{apple}};
+			\node (2) [below of=1] {\emoji{banana}};
+			\node (3) at (1.5,-0.85) {\emoji{cat}};
+
+			\draw(1) to [bend right] (2);
+			\draw(2) to [bend right] (3);
+			\draw(3) to [bend right] (1);
 		\end{graph}
 	\end{minipage}
 \end{multicols}
