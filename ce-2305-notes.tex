@@ -5,7 +5,7 @@
 \newenvironment{note}[1]{\begin{YellowBox}{Note}{#1}}{\end{YellowBox}}
 \newenvironment{theorem}[1]{\begin{GrayBox}{Theorem}{#1}}{\end{GrayBox}}
 \newenvironment{practice}[1]{\begin{PurpleBox}{Practice}{#1}}{\end{PurpleBox}}
-\newenvironment{graph}{\begin{tikzpicture}[node distance={0.65in}, thick, auto=center,every node/.style={draw,circle,fill=green!10}]}{\end{tikzpicture}}
+    \newenvironment{graph}{\begin{tikzpicture}[node distance={0.65in}, thick, auto=center,every node/.style={draw,circle,fill=green!10},other/.style={draw,circle,fill=blue!10},blank/.style={draw=white!0,fill=green!0}]}{\end{tikzpicture}}
 
 \newcommand{\br}{
 	\begin{center}
@@ -555,10 +555,10 @@ There are many different ways of proving a theorem. Let's assume a conditional s
 		Sets of numbers \textit{between} two numbers $a$ and $b$ if
 		$a,b\in\mathbb{R}\land a\leq b$
 		\begin{itemize}
-			\item $[a, b]=x\big|a\leq x\leq b$
-			\item $[a, b)=x\big|a\leq x < b$
-			\item $(a, b]=x\big|a < x\leq b$
-			\item $(a, b)=x\big|a < x < b$
+			\item $[a, b]=\{x\big|a\leq x\leq b\}$
+			\item $[a, b)=\{x\big|a\leq x < b\}$
+			\item $(a, b]=\{x\big|a < x\leq b\}$
+			\item $(a, b)=\{x\big|a < x < b\}$
 		\end{itemize}
 	\end{definition}
 \end{multicols}
@@ -591,7 +591,7 @@ Let $A=\{1,2,3\},B=\{2,3,4,5\}$:
 		\midrule
 		$A\cup B$                               & $A$ union $B$        & $\{1,2,3,4,5\}$  \\
 		$A\cap B$                               & $A$ intersection $B$ & $\{2,3\}$        \\
-		$\bar{A}$                               & $A$ complement $B$   & $\{x\not\in A\}$ \\
+		$\bar{A}$                               & complement of $A$    & $\{x\not\in A\}$ \\
 	\end{tabular}
 \end{table}
 \begin{definition}{Membership Table}\label{def:membership-table}
@@ -774,13 +774,13 @@ used in the field of \textit{computer science} to analyze algorithms.
 \end{multicols}
 
 \newpage
-\section{Number Theory}
+\section{Number Theory}\label{sec:number-theory}
 \begin{definition}{Division}\label{def:division}
 	Let $a,b\in\mathbb{Z}$. $a$ divides $b$ ($a|b$) if there exists integer $c$ such that $a\times c=b$
 	\[a|b,a,b\in\mathbb{Z}\iff\exists c\in\mathbb{Z}.(a\times c=b)\]
 \end{definition}
 
-\begin{theorem}{Basic Division Properties}
+\begin{theorem}{Basic Division Properties}\label{th:basic-division-properties}
 	Let $a,b,c\in\mathbb{Z},a\neq 0$:
 	\begin{itemize}
 		\item $\displaystyle (a|b)\land(a|c)\implies a|(b+c)$
@@ -789,13 +789,13 @@ used in the field of \textit{computer science} to analyze algorithms.
 	\end{itemize}
 \end{theorem}
 
-\begin{theorem}{Consequence of Division}
+\begin{theorem}{Consequence of Division}\label{th:division-consequence}
 	\[\forall a,b,c,m,n\in\mathbb{Z},a\neq0.\Big((a|b)\land(a|c)\implies\big(a|(mb+nc)\big)\Big)\]
 	Let $a,b,c,m,n$ be integers where $a\neq0$, and suppose $a|b\land a|c$.
 	Then, for any integers m and n, $a|mb+nc$.
 \end{theorem}
 
-\begin{theorem}{Division Algorithm}
+\begin{theorem}{Division Algorithm}\label{th:division-algorithm}
 	Let $a\in\mathbb{Z},d\in\mathbb{Z}^+$. Then there are unique integers $q$
 	and $r$ where $0\leq r<d$ such that $a=q\times d+r$
 	\[\forall a,q,r\in\mathbb{Z},d\in\mathbb{Z}^+,0\leq r<d.(a=q\times d+r)\]
@@ -803,36 +803,35 @@ used in the field of \textit{computer science} to analyze algorithms.
 
 \begin{multicols}{2}
 	{
-		\begin{definition}{Quotient}
+		\begin{definition}{Quotient}\label{def:quotient}
 			\[q=a\texttt{ div }d\]
 		\end{definition}
-		\begin{definition}{Congruency ($\equiv$)}
-			Let $a,b\in\mathbb{Z},m\in\mathbb{Z}^+$. $a$ is congruent to $b$ \texttt{mod} $m$ if\ldots
+		\begin{definition}{Congruency ($\equiv$)}\label{def:congruency}
+			Let $a,b\in\mathbb{Z},m\in\mathbb{Z}^+$. $a$ is congruent to $b\mod m$ if\ldots
 			\begin{itemize}
 				\item$m|a-b$
-				\item$a \texttt{ mod } m\equiv b \texttt{ mod }m$
-				\item$k\in\mathbb{Z},a=b+k\times m$
+				\item$a\mod m\equiv b\mod m$
+				\item$k\in\mathbb{Z}.(a=b+k\times m$)
 			\end{itemize}
 		\end{definition}
 	}
 	{
-		\begin{definition}{Remainder}
-			\[r=a\texttt{ mod }d\]
+		\begin{definition}{Remainder}\label{def:remainder}
+			\[r=a\mod d\]
 		\end{definition}
 
-		\begin{theorem}{Preservation of Congruencies}
-			Let $a,b,c,d\in\mathbb{Z},m\in\mathbb{Z}^+$. If $a\equiv b\texttt{ mod } m\land c\equiv d\texttt{ mod } m$, then
+		\begin{theorem}{Preservation of Congruencies}\label{th:preservation-of-congruencies}
+			Let $a,b,c,d\in\mathbb{Z},m\in\mathbb{Z}^+$. If $a\equiv b\mod m\land c\equiv d\mod m$, then
 			\begin{itemize}
-				\item$a+c\equiv b+d\hspace{1em}(\texttt{mod } m)$
-				\item$a\times c\equiv b\times d\hspace{1em}(\texttt{mod } m)$
+				\item$a+c\equiv b+d\hspace{1em}(\mod m)$
+				\item$a\times c\equiv b\times d\hspace{1em}(\mod m)$
 			\end{itemize}
 		\end{theorem}
 	}
 \end{multicols}
+\section{Induction and Recursion}\label{sec:induction-recursion}
 
-\section{Induction and Recursion}
-
-\begin{definition}{Proof via. Induction}
+\begin{definition}{Proof via. Induction}\label{def:induction-proof}
 	To prove that $P(n)$ is true for $n\in\mathbb{Z}^+$, we must complete these
 	two steps:
 	\begin{itemize}
@@ -842,7 +841,23 @@ used in the field of \textit{computer science} to analyze algorithms.
 	\end{itemize}
 \end{definition}
 
-\begin{definition}{Recursion}
+\begin{example}{Sum to Squares}
+	Prove that the sum of the first positive odd numbers is $n^2$:
+	\[\displaystyle P(n)=\left(1+3+5+\cdots+2n-1=n^2\right)\]
+	\br{}
+	\underline{\textbf{Basis Step:}} $n=1$\newline
+	\begin{align*}
+		1=               & \hspace{0.5em}{(1)}^2 \\
+		\therefore P(1)= & \texttt{ true}
+	\end{align*}
+	\underline{\textbf{Inductive Step:}} Prove $P(n)\implies P(n+1)$\newline
+	Assume that $P(n)$ is true, and prove that $P(n+1)$ is also true:
+	\[1+3+\cdots+2n-1+2n+1=n^2+2n+1=\left(n+1\right)^2\]
+	$1+3+\cdots+2n-1$ is $n^2$, so we can cancel out those terms. We're now
+	left with $2n+1=2n+1$, which is a tautology!
+\end{example}
+
+\begin{definition}{Recursion}\label{def:recursion}
 	A way to express a definition of an element in terms of itself. There's
 	two required steps to recursively define a function:
 	\begin{itemize}
@@ -852,10 +867,10 @@ used in the field of \textit{computer science} to analyze algorithms.
 	\end{itemize}
 \end{definition}
 
-\section{Counting}
-\subsection{Counting Basics}
+\section{Counting}\label{sec:counting}
+\subsection{Counting Basics}\label{sec:counting-basics}
 \marginnote{Think of nested \texttt{for} loops}
-\begin{theorem}{The Product Rule}
+\begin{theorem}{The Product Rule}\label{th:product-rule}
 	Suppose a procedure can be broken down into a sequence of multiple tasks.
 	If there are $n_1$ ways to do the first task, and for each task $k\in n_1$
 	there are $n_2$ and continuing on until with the final task having $n_a$
@@ -863,7 +878,7 @@ used in the field of \textit{computer science} to analyze algorithms.
 	ways to do that procedure.
 \end{theorem}
 
-\begin{example}{Product Rule}
+\begin{example}{Product Rule}\label{ex:product-rule}
 	An ice-cream shop has 12 different types of cones, and 32 flavors of ice-cream.
 	What is the number of unique single-scoop ice-creams the ice-cream shop can
 	serve?
@@ -873,16 +888,15 @@ used in the field of \textit{computer science} to analyze algorithms.
 	single-scoop ice-cream combinations that the shop can serve.
 \end{example}
 
-\newpage
 \marginnote{Think of sequental \texttt{for} loops}
-\begin{theorem}{The Sum Rule}
+\begin{theorem}{The Sum Rule}\label{th:sum-rule}
 	Suppose a procedure can be broken down into a sequence of multiple tasks.
 	If a task can be done in one of $n_1$ ways, or one of $n_2$ ways, or so
 	on and so forth until one of $n_a$ ways, then there are
 	\[n_1+n_2+\cdots+n_a\] wasy to do the task.
 \end{theorem}
 
-\begin{example}{Sum Rule}
+\begin{example}{Sum Rule}\label{ex:sum-rule}
 	You spot three potential people to steal wallets from. The first person's
 	wallet has 4 different types of credit / reward cards, the second person
 	has 18 (wow that's a large wallet!), and the third only has one. However,
@@ -893,99 +907,150 @@ used in the field of \textit{computer science} to analyze algorithms.
 	different cards to rob \emoji{smiling-imp}
 \end{example}
 
-\subsection{Pigeonhole Principle}
+\subsection{Pigeonhole Principle}\label{sec:pigeonhole-principle}
 \begin{multicols}{2}
-	\begin{theorem}{The Pigeonhole Principle}
+	\begin{theorem}{The Pigeonhole Principle}\label{th:pigeonhole}
 		If $k\in\mathbb{Z}^+$ and $k+1$ or more objects are placed into $k$
 		containers, then there's at least one container containing more than 1
 		object.
 	\end{theorem}
-	\begin{theorem}{Pigeonhole Consequence I}
+	\begin{theorem}{Pigeonhole Consequence I}\label{th:pigeonhole-consequence-1}
 		A function $f$ from a set of $k+1$ elements to a set of $k$ elements
 		will \textit{never be} one-to-one
 	\end{theorem}
 \end{multicols}
 
-\begin{example}{Pigeonhole and Ice-cream I}
+\begin{example}{Pigeonhole and Ice-cream}\label{ex:pigeonhole-icecream-galore}
 	For a total count of 23 scoops of ice-cream to be present in 22 cones,
 	there must be at least one cone with two ice-cream scoops
 \end{example}
 
 \begin{multicols}{2}
-	\begin{theorem}{Generalized Pigeonhole Principle}
+	\begin{theorem}{Generalized Pigeonhole Principle}\label{th:generalized-pigenohole}
 		If $N$ objects are placed into $k$ containers, then there must be at least
 		be one box containing at least $N/k$ objects
 		\[\left\lceil\frac{N}{k}\right\rceil\geq m\]
 	\end{theorem}
-	\begin{example}{Pigeons and Cards}
+	\begin{example}{Pigeons and Cards}\label{ex:pigenholes-and-cards}
 		From a standard deck of 52 playing cards, how many need to be drawn for
 		there to be at least 5 cards in the same suite?
 		\[\left\lceil\frac{N}{4}\geq5\right\rceil=21\]
 	\end{example}
 \end{multicols}
-\begin{theorem}{Pigeonhole Consequence II}
+\begin{theorem}{Pigeonhole Consequence II}\label{th:pigeonhole-2}
 	Every sequence of $n^2+1$ distinct real numbers contains a subsequence
 	of length $n+1$ that is either strictly increasing or decreasing
 \end{theorem}
 
-\subsection{Permutations and Combinations}
+\subsection{Permutations and Combinations}\label{sec:permutations-combinations}
 \begin{multicols}{2}
-	\begin{definition}{Permutation}
+	\begin{definition}{Permutation}\label{def:permutation}
 		A set of distinct objects in an ordered arragement. An ordered arrangement
 		of $n$ elements of a set is called an \textit{$n$-permutation}
 	\end{definition}
-	\begin{example}{$S=$\{\emoji{apple},\emoji{banana},\emoji{shark}\}}
+	\begin{example}{$S=$\{\emoji{apple},\emoji{banana},\emoji{shark}\}}\label{ex:permutation}
 		\begin{itemize}
 			\item\{\emoji{banana},\emoji{shark},\emoji{apple}\} is a permutation
 			\item\{\emoji{shark},\emoji{apple}\} is a 2-permutation
 		\end{itemize}
 	\end{example}
 \end{multicols}
-\begin{theorem}{Number of R-Permutations}
-    If $n\in\mathbb{Z}^+,r\in\mathbb{Z}$ where $1\leq r\leq n$, then there are
-    \[P(n,r)=n\times(n-1)\times(n-1)\ldots\times(n-r+1)\]
-    $r$-permutations with a set of $n$ distinct elements
+\begin{theorem}{Number of R-Permutations}\label{th:permutations-equation}
+	If $n\in\mathbb{Z}^+,r\in\mathbb{Z}$ where $1\leq r\leq n$, then there are
+	\[P(n,r)=n\times(n-1)\times(n-1)\ldots\times(n-r+1)\]
+	$r$-permutations with a set of $n$ distinct elements
 \end{theorem}
 
-\begin{note}{Simplification of the theorem}
-    The theorem can be simplified (and more commonly used) like this:
-    \[\forall n,r\in\mathbb{Z}.\left(P(n,r)=\frac{n!}{(n-r)!},0\leq r\leq n\right)\]
+\begin{note}{Simplification of the theorem}\label{note:permutations-equation}
+	The theorem can be simplified (and more commonly used) like this:
+	\[\forall n,r\in\mathbb{Z}.\left(P(n,r)=\frac{n!}{(n-r)!},0\leq r\leq n\right)\]
 \end{note}
 \begin{multicols}{2}
-    \begin{definition}{Combination}
-        An unordered subset with $r$ amoutn of elements from a set 
-    \end{definition}
-    \begin{example}{$S=$\{\emoji{shrimp},\emoji{cooking},\emoji{rice}\}}
-    \begin{itemize}
-        \item \{\emoji{shrimp},\emoji{rice}\} is a combination
-        \item \{\emoji{shrimp},\emoji{cooking}\} is a combination as well
-    \end{itemize}
-    \end{example}
+	\begin{definition}{Combination}\label{def:combination}
+		An unordered subset with $r$ amount of elements from a set
+	\end{definition}
+	\begin{example}{$S=$\{\emoji{shrimp},\emoji{cooking},\emoji{rice}\}}\label{ex:combination}
+		\begin{itemize}
+			\item \{\emoji{shrimp},\emoji{rice}\} is a combination
+			\item \{\emoji{shrimp},\emoji{cooking}\} is a combination as well
+		\end{itemize}
+	\end{example}
 \end{multicols}
 
-\begin{note}{Combinations vs. Permutations}
-    \[S=\{\text{\emoji{cow},\emoji{chicken},\emoji{turkey}}\}\]
-    \begin{align*}
-        \{\text{\emoji{cow},\emoji{turkey}}\} && \{\text{\emoji{turkey},\emoji{cow}}\}
-    \end{align*}
-    That would be 2 permutations, but \textit{only one} combination
+\begin{note}{Combinations vs. Permutations}\label{note:combinations-permutations-difference}
+	\[S=\{\text{\emoji{cow},\emoji{chicken},\emoji{turkey}}\}\]
+	\begin{align*}
+		\{\text{\emoji{cow},\emoji{turkey}}\} &  & \{\text{\emoji{turkey},\emoji{cow}}\}
+	\end{align*}
+	That would be 2 permutations, but \textit{only one} combination
 \end{note}
 
-\begin{theorem}{Number of combinations}
-    \[\forall n,r\in\mathbb{Z}.\left(C(n,r)=C(n,n-r)=\frac{n!}{r!\left(n-r\right)!},0\leq r\leq n\right)\]
+\begin{theorem}{Number of combinations}\label{th:combinations-equation}
+	\[\forall n,r\in\mathbb{Z}.\left(C(n,r)=C(n,n-r)=\frac{n!}{r!\left(n-r\right)!},0\leq r\leq n\right)\]
 \end{theorem}
 
 \marginnote{factorials make everything big!}
-\begin{example}{Permutations}
-    How many unique ways are there to select a first, second, and third place
-    winners in a contest with 15 contestants?
-    \br
-    \[P(15,3)=\frac{(15)!}{\left((15)-(3)\right)!}=2730\]
-    different ways!
+\begin{example}{Gold, Silver, Bronze}\label{ex:permutations}
+	How many unique ways are there to select a first, second, and third place
+	winners in a contest with 15 contestants?
+	\br
+	\[P(15,3)=\frac{(15)!}{\left((15)-(3)\right)!}=2730\]
+	different ways!
 \end{example}
 
-\section{Relations}
-\begin{definition}{Relation}
+\section{Discrete Probability}\label{sec:discrete-probability}
+\marginnote{its range is between 0 and 1, inclusive}
+\begin{definition}{Finite Probability}\label{def:finite-probability}
+	If $S$ is an non-empty sample space (set of possible outcomes) of equally
+	likely outcomes, and $E$ is an event (subset of sample space), the
+	probability of $E$ is \[p(E)=\frac{|E|}{|S|}\]
+\end{definition}
+
+\begin{example}{Diamond Rings and Seventeen}\label{ex:finite-probability}
+	There are two pouches in front of you. In once pouch, there are ten
+	diamond rings, but only four of them are ones that your girlfriend likes.
+	In another, there are a set of 13 Seventeen photocards---one for each member
+	in the group. Only one of them is Minghao. What's the probability of getting
+	a diamond ring that your girlfriend likes and a Seventeen photocard?
+	\br
+	The probability of getting a diamond ring that your girlfriend likes is
+	\[p(E_1)=\frac{4}{10}=\frac{2}{5}\]
+	While the probability of getting a Minghao photocard is
+	\[p(E_2)=\frac{1}{13}\]
+	To get the combined probability, remember the
+	\hyperref[th:product-rule]{Product Rule}
+	\[p(E)=\frac{2}{5}\times\frac{1}{13}=\frac{2}{65}\]
+\end{example}
+
+\begin{theorem}{Complementary Probability}\label{th:complementary-probability}
+	Let $E$ be an event in a sample space $S$. The probability of the event
+	$\bar E=S-E$, the complementary event of $E$ is \[p(\bar E)=1-p(E)\]
+\end{theorem}
+
+\begin{theorem}{Union of Two Events}\label{th:union-of-events}
+	The union of two events $E_1$ and $E_2$ in a sample space $S$ is
+	\[p(E_1\cup E_2)=p(E_1)+p(E_2)-p(E_1\cap E_2)\]
+\end{theorem}
+
+\begin{example}{Monty Hall Three-Door Puzzle}\label{ex:three-door-puzzle}
+	You're in a game show, and the host invites you to open one of three doors
+	that are in front of you. Behind only one of those doors is a scholarship
+	that will pay for the rest of your education at UTD. After picking one
+	of those doors, the game show host opens a door that a prize isn't behind,
+	and asks if you want to switch again. What should you do?
+	\br
+	The odds that one of the doors has the price is $p(E)=\frac{1}{3}$.
+	However, the game show host opening one of the doors without the prize
+	in it raises the odds to the other door that you didn't pick to $p(E)=\frac{2}{3}$. This is because the game show host is taking the set of 2 doors that
+	you didn't pick and keeping only the best door for you.
+	\bl
+	Basically, the door you initially picked is just normal and plain, but the
+	other one survived the guantlet in a battle against all the other doors and
+	won.
+\end{example}
+
+\section{Relations}\label{sec:relations}
+\begin{definition}{Binary Relation}\label{def:binary-relation}
 	Given sets $A,B$, it's a subset of $A\times B$
 \end{definition}
 
@@ -1001,26 +1066,32 @@ used in the field of \textit{computer science} to analyze algorithms.
 
 \begin{multicols}{2}
 	{
-		\begin{definition}{Reflexivity}
+		\begin{definition}{Reflexivity}\label{def:reflexivity}
 			A relation $R$ on a set $A$ is \textit{reflexive} if and only if:
 			\[\forall x.\big(x\in A\implies(x,x)\in R\big)\]
 		\end{definition}
+
+		\begin{example}{$A=$\{\emoji{apple},\emoji{banana},\emoji{mango},\emoji{lemon}\}}
+			This one is symmetric:
+			$R=$\{(\emoji{apple},\emoji{banana}),(\emoji{banana},\emoji{apple}),(\emoji{apple},\emoji{apple})\}
+			This one isn't, however:
+			$R=$\{(\emoji{lemon},\emoji{banana}),(\emoji{banana},\emoji{apple}),(\emoji{mango},\emoji{mango})\}
+		\end{example}
 	}
 	{
-		\begin{example}{}
-			\begin{align*}
-				A & = \{1,2,3\}                                      \\
-				R & = \{(1,1),(2,2),(1,3),(3,3)\}                    \\
-				R & = \{(3,3),(1,3),(1,1)\}\gets\text{not reflexive}
-			\end{align*}
+		\begin{example}{$A=$\{\emoji{cowboy-hat-face},\emoji{nerd-face}\}}\label{ex:reflexivity}
+			This relation is reflexive:\newline
+			$R=$\{(\emoji{cowboy-hat-face}, \emoji{cowboy-hat-face}), (\emoji{nerd-face}, \emoji{nerd-face}) (\emoji{nerd-face}, \emoji{cowboy-hat-face})\}
+			However, this one isn't:\newline
+			$R=$\{(\emoji{cowboy-hat-face}, \emoji{cowboy-hat-face}), (\emoji{cowboy-hat-face}, \emoji{nerd-face}) (\emoji{nerd-face}, \emoji{cowboy-hat-face})\}
 		\end{example}
 
+		\begin{definition}{Symmetry}\label{def:symmetry}
+			Relation $R$ on a set $A$ is symmetric if and only if
+			\[\forall x\forall y.\big((x,y)\in R\implies(y,x)\in R\big)\]
+		\end{definition}
 	}
 \end{multicols}
-\begin{definition}{Symmetry}
-	Relation $R$ on a set $A$ is symmetric if and only if
-	\[\forall x\forall y.\big((x,y)\in R\implies(y,x)\in R\big)\]
-\end{definition}
 
 \begin{definition}{Anti-Symmetry}
 	Relation $R$ on a set $A$ is antisymmetric if and only if
@@ -1029,21 +1100,17 @@ used in the field of \textit{computer science} to analyze algorithms.
 \begin{example}{}
 	\centering
 	\begin{tabular}{cl}
-		\multirow{2}{*}{$\leq$}                                                                      & Not symmetric: $3\leq5,5\not\leq3$                   \\
-		                                                                                             & Antisymmetric: $a\leq b,b\leq a\implies a=b$         \\
+		\multirow{2}{*}{$\leq$}                                 & Not symmetric: $3\leq5,5\not\leq3$                   \\
+		                                                        & Antisymmetric: $a\leq b,b\leq a\implies a=b$         \\
 		\hdashline
-		\multirow{2}{*}{$>$}                                                                         & Not symmetric: $5>3,3\not>5$                         \\
-		                                                                                             & Antisymmetric: $a>b,b>a\implies a=b$                 \\
+		\multirow{2}{*}{$>$}                                    & Not symmetric: $5>3,3\not>5$                         \\
+		                                                        & Antisymmetric: $a>b,b>a\implies a=b$                 \\
 		\hdashline
-		\multirow{2}{*}{$=$}                                                                         & Symmetric                                            \\
-		                                                                                             & Antisymmetric: $a=b,b=a\implies a=b$                 \\
+		\multirow{2}{*}{$=$}                                    & Symmetric                                            \\
+		                                                        & Antisymmetric: $a=b,b=a\implies a=b$                 \\
 		\hdashline
-		\multirow{2}{*}{$R=\{(a,b)|a,b\in\mathbb{Z}\land a=-b\}\subseteq\mathbb{Z}\times\mathbb{Z}$} & Symmetric: $(a,-a)\in R\implies (-a,a)\in R$         \\
-		                                                                                             & Not antisymmetric: $(a,-a)\land(-a,a)\in R,a\neq -a$ \\
-		\hdashline
-		\multirow{2}{*}{Let $A=\{1,2,3\}$}                                                           & Not symmetric: $(1,3)\in R,(3,1)\notin R$            \\
-		$R=\{(2,3),(3,2),(1,3)\}$                                                                    & Not antisymmetric: $(2,3),(3,2)\in R,2\neq 3$        \\
-		\hdashline
+		\multirow{2}{*}{$\{(a,b)|a,b\in\mathbb{Z}\land a=-b\}$} & Symmetric: $(a,-a)\in R\implies (-a,a)\in R$         \\
+		                                                        & Not antisymmetric: $(a,-a)\land(-a,a)\in R,a\neq -a$ \\
 	\end{tabular}
 \end{example}
 
@@ -1064,14 +1131,13 @@ used in the field of \textit{computer science} to analyze algorithms.
 	A relation that is reflexive, symmetric, and transitive
 \end{note}
 
-\newpage
-\section{Graphs}
+\section{Graphs}\label{sec:graphs}
 \marginnote{What's a graph without its nodes?}
-\begin{definition}{Graph}
+\begin{definition}{Graph}\label{def:graph}
 	Denoted by $G=(V,E)$, consists of a non-empty set of \textit vertices (or nodes) $V$ and a set of edges $E$
 \end{definition}
 \begin{multicols}{2}
-	\begin{definition}{Adjacent Verticies (Undirected)}
+	\begin{definition}{Adjacent Verticies (Undirected)}\label{adjacent-verticies-undirected}
 		When the endpoints of an edge $e$ are vertices $a$ and $b$, the verticies
 		are considered to be \textit{adjacent} (or \textit{neighbors}) with one
 		another.
@@ -1079,7 +1145,7 @@ used in the field of \textit{computer science} to analyze algorithms.
 		That edge is called an \textit{incident} edge, \textit{connecting} verticies
 		$a$ and $b$
 	\end{definition}
-	\begin{definition}{Adjacent Verticies (Directed)}
+	\begin{definition}{Adjacent Verticies (Directed)}\label{def:adjacent-verticies-directed}
 		When $(a,b)$ is an edge of a directed graph $G$, $a$ is \textit{adjacent to}
 		$b$, and $a$ is \textit{adjacent from} $b$.
 		\bl
@@ -1088,32 +1154,27 @@ used in the field of \textit{computer science} to analyze algorithms.
 	\end{definition}
 \end{multicols}
 
-\begin{definition}{Neighborhood $\big(N(v)\big)$}
+\begin{definition}{Neighborhood $\big(N(v)\big)$}\label{def:neighborhood}
 	``The set of all neighbors of $u$'' of a graph $G=(V,E)$, denoted by ($N(v)$)
 	\bl
 	If $A$ is a subset of $V$, $N(A)$ is the set of verticies in $G$ that are
 	adjacent to at least one vertex in $A$: \[V=\bigcup_{v\in A}N(v)\]
 \end{definition}
 
+\newpage
 \begin{multicols}{2}
-	\begin{definition}{Degree (Undirected Graph) \big(\texttt{deg}($v$)\big)}
+	\begin{definition}{Degree (Undirected Graph) \big(\texttt{deg}($v$)\big)}\label{def:degree-undirected}
 		The number of edges incident with vertex $v$. A loop contributes
 		\textit{twice} to the count
 	\end{definition}
-	\begin{definition}{Degree (Directed Graph) \big(\texttt{deg}$^{\pm}$($v$)\big)}
+	\begin{definition}{Degree (Directed Graph) \big(\texttt{deg}$^{\pm}$($v$)\big)}\label{def:degree-directed}
 		\texttt{deg}$^-(v)$ number of edges pointing into $v$
 		\newline
 		\texttt{deg}$^+(v)$ number of edges pointing out from $v$
 	\end{definition}
 \end{multicols}
 
-\begin{definition}{Infinite Graphs}
-	If $|V|=\infty$, then the graph is referred to as an \textit{infinite} graph,
-	otherwise it's called a \textit{finite} graph
-\end{definition}
-
-
-\begin{example}{Neighborhoods and Degrees}
+\begin{example}{Neighborhoods and Degrees}\label{ex:neighborhoods-and-degrees}
 	\centering
 	\captionof{figure}{Neighborhoods Example}\label{fig:neighborhoods}
 	\begin{graph}
@@ -1159,19 +1220,19 @@ used in the field of \textit{computer science} to analyze algorithms.
 	\end{tabular}
 \end{example}
 
-\begin{note}{Sum of Degrees}
+\begin{note}{Sum of Degrees}\label{note:degree-sum}
 	When adding the degrees of all verticies in graph $G=(V,E)$, you'll find
 	that each edge contributes \textit{two} to the sum of degrees, since
 	each edge is incident with exactly two verticies
 \end{note}
 
-\begin{theorem}{Handshake Theorem}
+\begin{theorem}{Handshake Theorem}\label{th:handshake}
 	If $G=(v,E)$ is an undirected graph with $|E|=m$ edges, then
 	\[\sum_{v\in V}\texttt{deg($v$)}=\sum_{v\in V_1}\texttt{deg($v$)}+\sum_{v\in V_2}\texttt{deg($v$)}=2\times m\]
 	This applies even if multiple edges and loops are present
 \end{theorem}
 
-\begin{example}{Handshake}
+\begin{example}{Handshake}\label{ex:handshake}
 	We can see this theorem in effect if we look back at
 	\hyperref[fig:neighborhoods]{Figure 1}:
 	\begin{align*}
@@ -1182,19 +1243,18 @@ used in the field of \textit{computer science} to analyze algorithms.
 	\end{align*}
 \end{example}
 
-\newpage
 \begin{multicols}{2}
-	\begin{theorem}{Consequences of Handshaking}
+	\begin{theorem}{Consequences of Handshaking}\label{th:handshake-consequence}
 		In an undirected graph, the  sum of degree of nodes with odd degrees is
 		\textit{even}.
 	\end{theorem}
-	\begin{theorem}{Directed Handshake}
+	\begin{theorem}{Directed Handshake}\label{th:handshake-directed}
 		Let $G=(V,E)$ be a directed graph:
 		\[\sum_{v\in V}\texttt{deg}^-(v)=\sum_{v\in V}\texttt{deg}^+(v)=|E|\]
 	\end{theorem}
 \end{multicols}
-
-\begin{table}[h!]
+\newpage
+\begin{table}[h!]\label{tab:graph-terminology}
 	\centering
 	\caption{Graph Terminology}
 	\begin{tabular}{llll}
@@ -1212,10 +1272,10 @@ used in the field of \textit{computer science} to analyze algorithms.
 	\end{tabular}
 \end{table}
 
-\begin{multicols}{2}
+\begin{multicols}{3}
 	\begin{minipage}{\linewidth}
 		\centering
-		\captionof{figure}{Simple Graph}
+		\captionof{figure}{Simple}
 		\begin{graph}
 			\node (1) {\emoji{apple}};
 			\node (2) [below of=1] {\emoji{banana}};
@@ -1259,12 +1319,12 @@ used in the field of \textit{computer science} to analyze algorithms.
 			\draw (1) -- (4);
 			\draw (2) -- (4);
 			\draw (4) -- (5);
-			\draw (5) to [out=270,in=330,looseness=5] (5);
+			\draw (5) to [out=0,in=60,looseness=5] (5);
 		\end{graph}
 	\end{minipage}
 	\begin{minipage}{\linewidth}
 		\centering
-		\captionof{figure}{Simple Directed Graph}
+		\captionof{figure}{Simple Directed}
 		\begin{graph}
 			\node (1) {\emoji{apple}};
 			\node (2) [below of=1] {\emoji{banana}};
@@ -1280,7 +1340,7 @@ used in the field of \textit{computer science} to analyze algorithms.
 	\end{minipage}
 	\begin{minipage}{\linewidth}
 		\centering
-		\captionof{figure}{Directed Multigraph}
+		\captionof{figure}{Dir. Multigraph}
 		\begin{graph}
 			\node (1) {\emoji{apple}};
 			\node (2) [below of=1] {\emoji{banana}};
@@ -1312,8 +1372,13 @@ used in the field of \textit{computer science} to analyze algorithms.
 		\end{graph}
 	\end{minipage}
 \end{multicols}
+
+\begin{definition}{Infinite Graphs}\label{def:infinite-graph}
+	If $|V|=\infty$, then the graph is referred to as an \textit{infinite} graph,
+	otherwise it's called a \textit{finite} graph
+\end{definition}
 \newpage
-\begin{table}[h!]
+\begin{table}[h!]\label{tab:special-graphs}
 	\centering
 	\caption{Special Graphs}
 	\begin{tabular}{ll}
@@ -1323,7 +1388,7 @@ used in the field of \textit{computer science} to analyze algorithms.
 		Complete Graph                     &
 		For $n$ nodes, there exists \textit{exactly one} edge between any
 		pair of nodes                                                                                                    \\
-		Cycles Graph                       &
+		Cyclical Graph                     &
 		\parbox{30em}{For $n\geq3$, the graph $C_n$ consists of path: $(v_1,v_2),(v_2,v_2)\ldots,(v_{n-1},v_n),(v_n,1)$} \\
 		Bipartite Graph                    &
 		\parbox{30em}{A simple graph $G=(V,E)$ such that $V$ can be partitioned into
@@ -1337,12 +1402,12 @@ used in the field of \textit{computer science} to analyze algorithms.
 \begin{multicols}{2}
 	\begin{minipage}{\linewidth}
 		\centering
-		\captionof{figure}{Complete Graph}
+		\captionof{figure}{Complete Graph}\label{fig:complete-graph}
 		\begin{graph}
-			\node (1) {\emoji{apple}};
-			\node (2) [below of=1] {\emoji{banana}};
-			\node (3) [right of=1]{\emoji{cat}};
-			\node (4) [below of=3] {\emoji{elephant}};
+			\node[] (1) {\emoji{apple}};
+			\node[] (2) [below of=1] {\emoji{banana}};
+			\node[] (3) [right of=1]{\emoji{cat}};
+			\node[] (4) [below of=3] {\emoji{elephant}};
 
 			\draw(1) to (2);
 			\draw(1) to (3);
@@ -1354,16 +1419,66 @@ used in the field of \textit{computer science} to analyze algorithms.
 	\end{minipage}
 	\begin{minipage}{\linewidth}
 		\centering
-		\captionof{figure}{Cycles Graph}
+		\captionof{figure}{Cycles Graph}\label{fig:cyclical-graph}
 		\begin{graph}
-			\node (1) {\emoji{apple}};
-			\node (2) [below of=1] {\emoji{banana}};
-			\node (3) at (1.5,-0.85) {\emoji{cat}};
+			\node[] (1) {\emoji{apple}};
+			\node[] (2) [below of=1] {\emoji{banana}};
+			\node[] (3) at (1.5,-0.85) {\emoji{cat}};
 
 			\draw(1) to [bend right] (2);
 			\draw(2) to [bend right] (3);
 			\draw(3) to [bend right] (1);
 		\end{graph}
 	\end{minipage}
+	\begin{minipage}{\linewidth}
+		\centering
+		\captionof{figure}{Bipartite Graph}\label{fig:bipartite-graph}
+		\begin{graph}
+			\node[] (1) {\emoji{apple}};
+			\node[] (2) [below of=1] {\emoji{banana}};
+			\node[] (3) [below of=2] {\emoji{cat}};
+			\node[other] (4) [right of=1] {\emoji{orange}};
+			\node[other] (5) [below of=4] {\emoji{mango}};
+			\node[other](6) [below of=5] {\emoji{frog}};
+
+			\draw(1) to (4);
+			\draw(1) to (2);
+			\draw(2) to (5);
+			\draw(3) to (6);
+			\draw(5) to (6);
+		\end{graph}
+	\end{minipage}
+	\begin{minipage}{\linewidth}
+		\centering
+		\captionof{figure}{Complete Bipartite Graph}\label{fig:complete-bipartite-graph}
+		\begin{graph}
+			\node[] (1) {\emoji{apple}};
+			\node[blank] (2) [right of=1]{};
+			\node[] (3) [right of=2] {\emoji{cat}};
+			\node[other] (4) [below of=1] {\emoji{orange}};
+			\node[other] (5) [right of=4] {\emoji{mango}};
+			\node[other](6) [right of=5] {\emoji{frog}};
+
+			\draw(1) to (4);
+			\draw(1) to (5);
+			\draw(3) to (5);
+			\draw(3) to (6);
+		\end{graph}
+	\end{minipage}
+	\begin{minipage}{\linewidth}
+		\centering
+		\captionof{figure}{Subgraph of \hyperref[fig:complete-graph]{Figure 8}}\label{fig:complete-graph}
+		\begin{graph}
+			\node[] (1) {\emoji{apple}};
+			\node[] (2) [below of=1] {\emoji{banana}};
+			\node[] (3) [right of=1]{\emoji{cat}};
+
+			\draw(1) to (2);
+			\draw(1) to (3);
+			\draw(2) to (3);
+		\end{graph}
+	\end{minipage}
 \end{multicols}
 \end{document}
+
+
